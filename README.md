@@ -1,4 +1,22 @@
 
+# install
+
+🚨 `wagon_common` and `challengify` are required as a dependency but are not yet published to PyPI and need to be manually installed first
+
+``` bash
+pip install git+ssh://git@github.com/lewagon/python-utilities.git
+pip install git+ssh://git@github.com/lewagon/challengify.git
+pip install git+ssh://git@github.com/lewagon/myriad.git
+```
+
+# uninstall
+
+``` bash
+pip uninstall -y myriad
+pip uninstall -y challengify
+pip uninstall -y wagon_common
+```
+
 # setup
 
 copy `.env.sample` to `.env` and provide a valid gh personal token with repo read access
