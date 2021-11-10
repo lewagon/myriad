@@ -1,0 +1,5 @@
+python-dotenv
+click
+colorama
+pyyaml
+requests

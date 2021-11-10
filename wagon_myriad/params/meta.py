@@ -1,0 +1,4 @@
+
+SOLUTION_META_DIRECTORY = ".lewagon"
+SOLUTION_META_FILE = "metadata.yml"
+SOLUTION_META_CHALLENGE_OUTPUT = "challenge_output"

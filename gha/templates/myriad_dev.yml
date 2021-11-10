@@ -1,0 +1,56 @@
+name: Myriad Dev
+
+on:
+  push:
+    branches: master
+  pull_request:
+    types: [synchronize, opened]
+
+jobs:
+  myriad-dev:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    # - name: Dump GitHub context
+    #   env:
+    #     GITHUB_CONTEXT: ${{ toJson(github) }}
+    #   run: echo "$GITHUB_CONTEXT"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/utils.git@correct-myriad-challengify#subdirectory=wagon_common
+        pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/utils.git#subdirectory=challengify
+        pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/utils.git@correct-myriad-challengify#subdirectory=myriad
+    # - name: Setup tmate session
+    #   uses: mxschmitt/action-tmate@v3
+    - name: Generate myriads
+      run: |
+        if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+          MYRIAD_BASE_REF="$GITHUB_BASE_REF"
+          MYRIAD_BASE_COMMIT_OPTION=""
+        else
+          MYRIAD_BASE_REF="${{ github.ref_name }}"
+          MYRIAD_BASE_COMMIT_OPTION="--base-commit ${{ github.event.before }}"
+        fi
+        if [[ ("${{ secrets.VERBOSE }}" == "True") || ("${{ secrets.VERBOSE }}" == "true") ]]; then
+          VERBOSE="--verbose"
+        else
+          VERBOSE=""
+        fi
+        myriad gen \
+          --gha \
+          --event "$GITHUB_EVENT_NAME" \
+          --organization "$GITHUB_REPOSITORY_OWNER" \
+          --course "$GITHUB_REPOSITORY" \
+          --head-ref "$GITHUB_HEAD_REF" \
+          --base-ref "$MYRIAD_BASE_REF" \
+          $(echo $MYRIAD_BASE_COMMIT_OPTION) \
+          --gh-nickname "${{ secrets.USERNAME }}" \
+          --gh-token "${{ secrets.TOKEN }}" \
+          $(echo $VERBOSE)

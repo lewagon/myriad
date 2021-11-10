@@ -1,0 +1,798 @@
+[
+    {
+        "path": "00-Setup/01-Check",
+        "repo": "lewagon-data/check"
+    },
+    {
+        "path": "00-Setup/02-Git",
+        "repo": "lewagon-data/git"
+    },
+    {
+        "path": "00-Setup/03-Command-Line",
+        "repo": "lewagon-data/command-line"
+    },
+    {
+        "path": "00-Setup/04-Tic-Tac-Toe",
+        "repo": "lewagon-data/tic-tac-toe"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/01-Sum-Of-Three",
+        "repo": "lewagon-data/sum-of-three"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/02-String-Manipulation",
+        "repo": "lewagon-data/string-manipulation"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/03-Data-Structures",
+        "repo": "lewagon-data/data-structures"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/04-Debugging",
+        "repo": "lewagon-data/debugging"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/05-System-Parameters",
+        "repo": "lewagon-data/system-parameters"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/06-Environment",
+        "repo": "lewagon-data/environment"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/07-Optional-Sudoku",
+        "repo": "lewagon-data/optional-sudoku"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/08-Optional-Sudoku-Solver",
+        "repo": "lewagon-data/optional-sudoku-solver"
+    },
+    {
+        "path": "01-Python/01-Programming-Basics/Recap",
+        "repo": "lewagon-data/python_basics"
+    },
+    {
+        "path": "01-Python/02-Data-Sourcing/01-CSV",
+        "repo": "lewagon-data/csv"
+    },
+    {
+        "path": "01-Python/02-Data-Sourcing/02-API",
+        "repo": "lewagon-data/api"
+    },
+    {
+        "path": "01-Python/02-Data-Sourcing/03-Scraping",
+        "repo": "lewagon-data/recipe_scraping"
+    },
+    {
+        "path": "01-Python/02-Data-Sourcing/Optional-01-Olympic-Winter-Games",
+        "repo": "lewagon-data/optional-01-olympic-winter-games"
+    },
+    {
+        "path": "01-Python/02-Data-Sourcing/Optional-02-Advanced-Scraping",
+        "repo": "lewagon-data/optional-02-advanced-scraping"
+    },
+    {
+        "path": "01-Python/02-Data-Sourcing/Recap",
+        "repo": "lewagon-data/api_geocoding"
+    },
+    {
+        "path": "01-Python/03-SQL-Basics/01-Table-Design",
+        "repo": "lewagon-data/table-design"
+    },
+    {
+        "path": "01-Python/03-SQL-Basics/02-DB-Design",
+        "repo": "lewagon-data/db-design"
+    },
+    {
+        "path": "01-Python/03-SQL-Basics/03-Interacting-with-db",
+        "repo": "lewagon-data/interacting-with-db"
+    },
+    {
+        "path": "01-Python/03-SQL-Basics/04-Interacting-With-Code",
+        "repo": "lewagon-data/interacting-with-code"
+    },
+    {
+        "path": "01-Python/03-SQL-Basics/05-SQL-Queries",
+        "repo": "lewagon-data/sql-queries"
+    },
+    {
+        "path": "01-Python/03-SQL-Basics/Recap",
+        "repo": "lewagon-data/jukebox_queries"
+    },
+    {
+        "path": "01-Python/04-SQL-Advanced/00-Warmup",
+        "repo": "lewagon-data/back_to_school_query"
+    },
+    {
+        "path": "01-Python/04-SQL-Advanced/01-Query-the-DB",
+        "repo": "lewagon-data/query-the-db"
+    },
+    {
+        "path": "01-Python/04-SQL-Advanced/02-Join-the-tables",
+        "repo": "lewagon-data/join-the-tables"
+    },
+    {
+        "path": "01-Python/04-SQL-Advanced/03-Rank-And-Partition",
+        "repo": "lewagon-data/rank-and-partition"
+    },
+    {
+        "path": "01-Python/04-SQL-Advanced/04-Subquery-Refactoring",
+        "repo": "lewagon-data/subquery-refactoring"
+    },
+    {
+        "path": "01-Python/04-SQL-Advanced/Recap",
+        "repo": "lewagon-data/blog_queries"
+    },
+    {
+        "path": "02-Data-Toolkit/01-Data-Analysis/01-Notebook",
+        "repo": "lewagon-data/notebook"
+    },
+    {
+        "path": "02-Data-Toolkit/01-Data-Analysis/02-Numpy",
+        "repo": "lewagon-data/numpy"
+    },
+    {
+        "path": "02-Data-Toolkit/01-Data-Analysis/03-US-Oil-and-Gas-Production",
+        "repo": "lewagon-data/us-oil-and-gas-production"
+    },
+    {
+        "path": "02-Data-Toolkit/01-Data-Analysis/04-Multiple-Files-With-Pandas",
+        "repo": "lewagon-data/multiple-files-with-pandas"
+    },
+    {
+        "path": "02-Data-Toolkit/01-Data-Analysis/05-Optional-Experimenting",
+        "repo": "lewagon-data/optional-experimenting"
+    },
+    {
+        "path": "02-Data-Toolkit/01-Data-Analysis/Recap",
+        "repo": "lewagon-data/titanic_disaster"
+    },
+    {
+        "path": "02-Data-Toolkit/02-Data-Sourcing/00-Warmup",
+        "repo": "lewagon-data/opengraph_api"
+    },
+    {
+        "path": "02-Data-Toolkit/02-Data-Sourcing/01-Stock-Market-API",
+        "repo": "lewagon-data/stock-market-api"
+    },
+    {
+        "path": "02-Data-Toolkit/02-Data-Sourcing/02-Scraping",
+        "repo": "lewagon-data/book_scraping"
+    },
+    {
+        "path": "02-Data-Toolkit/02-Data-Sourcing/03-Text-Extraction-with-Regex",
+        "repo": "lewagon-data/text-extraction-with-regex"
+    },
+    {
+        "path": "02-Data-Toolkit/02-Data-Sourcing/Recap",
+        "repo": "lewagon-data/virtual_library"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/01-Matplotlib-Intro",
+        "repo": "lewagon-data/matplotlib-intro"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/02-Matplotlib-Basics",
+        "repo": "lewagon-data/matplotlib-basics"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/03-Subplotting",
+        "repo": "lewagon-data/subplotting"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/04-Seaborn-Basics",
+        "repo": "lewagon-data/seaborn-basics"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/06-Scatter-Plot",
+        "repo": "lewagon-data/scatter-plot"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/07-Maps",
+        "repo": "lewagon-data/maps"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/Optional-Bar-Plot",
+        "repo": "lewagon-data/optional-bar-plot"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/Optional-Box-And-Violin",
+        "repo": "lewagon-data/optional-box-and-violin"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/Optional-Histogram-And-Ridgeline",
+        "repo": "lewagon-data/optional-histogram-and-ridgeline"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/Optional-Scatter-Plot",
+        "repo": "lewagon-data/optional-scatter-plot"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/Optional-Relation-Diagrams",
+        "repo": "lewagon-data/optional-relation-diagrams"
+    },
+    {
+        "path": "02-Data-Toolkit/03-Data-Visualization/Recap",
+        "repo": "lewagon-data/from_data_to_viz"
+    },
+    {
+        "path": "03-Maths/01-Algebra-Calculus/01-real-estate-estimator",
+        "repo": "lewagon-data/real-estate-estimator"
+    },
+    {
+        "path": "03-Maths/01-Algebra-Calculus/02-real-estate-advanced-estimator",
+        "repo": "lewagon-data/real-estate-advanced-estimator"
+    },
+    {
+        "path": "03-Maths/01-Algebra-Calculus/03-Scipy",
+        "repo": "lewagon-data/scipy"
+    },
+    {
+        "path": "03-Maths/01-Algebra-Calculus/Optional-Exercises",
+        "repo": "lewagon-data/optional-exercises"
+    },
+    {
+        "path": "03-Maths/01-Algebra-Calculus/Recap",
+        "repo": "lewagon-data/audio_processing"
+    },
+    {
+        "path": "03-Maths/02-Statistics-Probabilities/01-Mean-Mode-Median-Std",
+        "repo": "lewagon-data/mean-mode-median-std"
+    },
+    {
+        "path": "03-Maths/02-Statistics-Probabilities/02-Toss-a-Coin",
+        "repo": "lewagon-data/toss-a-coin"
+    },
+    {
+        "path": "03-Maths/02-Statistics-Probabilities/03-Central-Limit-Theorem",
+        "repo": "lewagon-data/central-limit-theorem"
+    },
+    {
+        "path": "03-Maths/02-Statistics-Probabilities/Optional-Bayes-Theorem",
+        "repo": "lewagon-data/optional-bayes-theorem"
+    },
+    {
+        "path": "03-Maths/02-Statistics-Probabilities/Optional-Mean-Without-Outliers",
+        "repo": "lewagon-data/optional-mean-without-outliers"
+    },
+    {
+        "path": "03-Maths/02-Statistics-Probabilities/Recap",
+        "repo": "lewagon-data/clt_irl"
+    },
+    {
+        "path": "04-Decision-Science/01-Project-Setup/01-Context-and-Setup",
+        "repo": "lewagon-data/context-and-setup"
+    },
+    {
+        "path": "04-Decision-Science/01-Project-Setup/02-Data-Preparation",
+        "repo": "lewagon-data/data-preparation"
+    },
+    {
+        "path": "04-Decision-Science/01-Project-Setup/03-Exploratory-Analysis",
+        "repo": "lewagon-data/exploratory-analysis"
+    },
+    {
+        "path": "04-Decision-Science/01-Project-Setup/Optional-Metric-Design",
+        "repo": "lewagon-data/optional-metric-design"
+    },
+    {
+        "path": "04-Decision-Science/01-Project-Setup/Recap",
+        "repo": "lewagon-data/olist_data_metric"
+    },
+    {
+        "path": "04-Decision-Science/02-Statistical-Inference/01-Orders",
+        "repo": "lewagon-data/orders"
+    },
+    {
+        "path": "04-Decision-Science/02-Statistical-Inference/02-Simple-Analysis",
+        "repo": "lewagon-data/simple-analysis"
+    },
+    {
+        "path": "04-Decision-Science/02-Statistical-Inference/03-Reviews-Translator",
+        "repo": "lewagon-data/reviews-translator"
+    },
+    {
+        "path": "04-Decision-Science/02-Statistical-Inference/Recap",
+        "repo": "lewagon-data/olist_nps"
+    },
+    {
+        "path": "04-Decision-Science/03-Linear-Regression/01-Orders-Regression",
+        "repo": "lewagon-data/orders-regression"
+    },
+    {
+        "path": "04-Decision-Science/03-Linear-Regression/02-Sellers",
+        "repo": "lewagon-data/sellers"
+    },
+    {
+        "path": "04-Decision-Science/03-Linear-Regression/Optional-Products",
+        "repo": "lewagon-data/optional-products"
+    },
+    {
+        "path": "04-Decision-Science/03-Linear-Regression/Recap",
+        "repo": "lewagon-data/olist_delivery_time"
+    },
+    {
+        "path": "04-Decision-Science/04-Logistic-Regression/01-Logit",
+        "repo": "lewagon-data/logit"
+    },
+    {
+        "path": "04-Decision-Science/04-Logistic-Regression/02-CEO-request",
+        "repo": "lewagon-data/recap_ceo_request"
+    },
+    {
+        "path": "04-Decision-Science/04-Logistic-Regression/Recap",
+        "repo": "lewagon-data/olist_pnl_analysis"
+    },
+    {
+        "path": "04-Decision-Science/05-Communicate/01-CEO-request",
+        "repo": "lewagon-data/olist_ceo_request"
+    },
+    {
+        "path": "05-ML/01-Fundamentals-of-Machine-Learning/01-Linear-Regression",
+        "repo": "lewagon-data/linear-regression"
+    },
+    {
+        "path": "05-ML/01-Fundamentals-of-Machine-Learning/02-Learning-Curves",
+        "repo": "lewagon-data/learning-curves"
+    },
+    {
+        "path": "05-ML/01-Fundamentals-of-Machine-Learning/03-Problems",
+        "repo": "lewagon-data/problems"
+    },
+    {
+        "path": "05-ML/01-Fundamentals-of-Machine-Learning/04-Logistic-Regression",
+        "repo": "lewagon-data/logistic-regression"
+    },
+    {
+        "path": "05-ML/01-Fundamentals-of-Machine-Learning/05-Bonus",
+        "repo": "lewagon-data/house_free_party"
+    },
+    {
+        "path": "05-ML/01-Fundamentals-of-Machine-Learning/Recap",
+        "repo": "lewagon-data/the_botanist"
+    },
+    {
+        "path": "05-ML/02-Prepare-the-dataset/01-Preprocessing-Workflow",
+        "repo": "lewagon-data/preprocessing-workflow"
+    },
+    {
+        "path": "05-ML/02-Prepare-the-dataset/02-Feature-Selection",
+        "repo": "lewagon-data/feature-selection"
+    },
+    {
+        "path": "05-ML/02-Prepare-the-dataset/03-Car-Prices",
+        "repo": "lewagon-data/car-prices"
+    },
+    {
+        "path": "05-ML/02-Prepare-the-dataset/04-Bonus",
+        "repo": "lewagon-data/houses_preparation"
+    },
+    {
+        "path": "05-ML/02-Prepare-the-dataset/Recap",
+        "repo": "lewagon-data/cars_preparation"
+    },
+    {
+        "path": "05-ML/03-Performance-metrics/01-KNN",
+        "repo": "lewagon-data/knn"
+    },
+    {
+        "path": "05-ML/03-Performance-metrics/02-Electrocardiograms",
+        "repo": "lewagon-data/electrocardiograms"
+    },
+    {
+        "path": "05-ML/03-Performance-metrics/03-Threshold-Adjustments",
+        "repo": "lewagon-data/threshold-adjustments"
+    },
+    {
+        "path": "05-ML/03-Performance-metrics/04-Bonus",
+        "repo": "lewagon-data/fraudlent_transactions_detector"
+    },
+    {
+        "path": "05-ML/03-Performance-metrics/Recap",
+        "repo": "lewagon-data/spotify_recommendation"
+    },
+    {
+        "path": "05-ML/04-Under-the-hood/01-Loss-Functions",
+        "repo": "lewagon-data/loss-functions"
+    },
+    {
+        "path": "05-ML/04-Under-the-hood/02-Solvers",
+        "repo": "lewagon-data/solvers"
+    },
+    {
+        "path": "05-ML/04-Under-the-hood/03-Batch-Gradient-Descent",
+        "repo": "lewagon-data/batch-gradient-descent"
+    },
+    {
+        "path": "05-ML/04-Under-the-hood/Optional-Gradient-Descent-Advanced",
+        "repo": "lewagon-data/optional-gradient-descent-advanced"
+    },
+    {
+        "path": "05-ML/04-Under-the-hood/Recap",
+        "repo": "lewagon-data/recap_under_the_hood"
+    },
+    {
+        "path": "05-ML/05-Model-Tuning/01-Workflow",
+        "repo": "lewagon-data/workflow"
+    },
+    {
+        "path": "05-ML/05-Model-Tuning/02-Regularization",
+        "repo": "lewagon-data/regularization"
+    },
+    {
+        "path": "05-ML/05-Model-Tuning/03-SVM",
+        "repo": "lewagon-data/svm"
+    },
+    {
+        "path": "05-ML/05-Model-Tuning/04-Custom-Scorer",
+        "repo": "lewagon-data/custom-scorer"
+    },
+    {
+        "path": "05-ML/05-Model-Tuning/05-Titanic",
+        "repo": "lewagon-data/titanic"
+    },
+    {
+        "path": "05-ML/05-Model-Tuning/Recap",
+        "repo": "lewagon-data/recap_model_tuning"
+    },
+    {
+        "path": "05-ML/08-Workflow/01-Preprocessor-Tuning",
+        "repo": "lewagon-data/preprocessor-tuning"
+    },
+    {
+        "path": "05-ML/08-Workflow/02-Custom-Transformer",
+        "repo": "lewagon-data/custom-transformer"
+    },
+    {
+        "path": "05-ML/08-Workflow/03-Tuning-Pipeline",
+        "repo": "lewagon-data/tuning-pipeline"
+    },
+    {
+        "path": "05-ML/08-Workflow/04-Pickle-Pipe",
+        "repo": "lewagon-data/pickle-pipe"
+    },
+    {
+        "path": "05-ML/08-Workflow/05-Hand-Made-Standardizer",
+        "repo": "lewagon-data/hand-made-standardizer"
+    },
+    {
+        "path": "05-ML/08-Workflow/07-Custom-Encoder",
+        "repo": "lewagon-data/custom-encoder"
+    },
+    {
+        "path": "05-ML/08-Workflow/06-Bonus",
+        "repo": "lewagon-data/cars_pipeline"
+    },
+    {
+        "path": "05-ML/08-Workflow/Recap",
+        "repo": "lewagon-data/recap_workflow"
+    },
+    {
+        "path": "05-ML/07-Ensemble-Methods/01-Houses-Kaggle-Competition",
+        "repo": "lewagon-data/houses-kaggle-competition"
+    },
+    {
+        "path": "05-ML/07-Ensemble-Methods/Recap",
+        "repo": "lewagon-data/packaged_houses_trainer"
+    },
+    {
+        "path": "05-ML/06-Unsupervised-Learning/01-Image-Compression",
+        "repo": "lewagon-data/image-compression"
+    },
+    {
+        "path": "05-ML/06-Unsupervised-Learning/02-Face-Recognition",
+        "repo": "lewagon-data/face-recognition"
+    },
+    {
+        "path": "05-ML/06-Unsupervised-Learning/03-Movie-Recommendation",
+        "repo": "lewagon-data/movie-recommendation"
+    },
+    {
+        "path": "05-ML/06-Unsupervised-Learning/Recap",
+        "repo": "lewagon-data/recap_unsupervised_learning"
+    },
+    {
+        "path": "05-ML/09-Time-Series/01-Artificial-Time-Series",
+        "repo": "lewagon-data/artificial-time-series"
+    },
+    {
+        "path": "05-ML/09-Time-Series/02-ARIMA",
+        "repo": "lewagon-data/arima"
+    },
+    {
+        "path": "05-ML/09-Time-Series/03-SARIMA",
+        "repo": "lewagon-data/sarima"
+    },
+    {
+        "path": "05-ML/09-Time-Series/04-Facebook-Prophet",
+        "repo": "lewagon-data/facebook-prophet"
+    },
+    {
+        "path": "05-ML/09-Time-Series/05-SARIMAX",
+        "repo": "lewagon-data/sarimax"
+    },
+    {
+        "path": "05-ML/09-Time-Series/Recap",
+        "repo": "lewagon-data/recap_time_series"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/01-Ham-or-Spam",
+        "repo": "lewagon-data/ham-or-spam"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/02-Movie-Reviews",
+        "repo": "lewagon-data/movie-reviews"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/03-Vectorizer-Tuning",
+        "repo": "lewagon-data/vectorizer-tuning"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/04-LDA",
+        "repo": "lewagon-data/lda"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/05-Review-Investigation",
+        "repo": "lewagon-data/review-investigation"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/06-Bonus",
+        "repo": "lewagon-data/part_of_speech_to_the_rescue"
+    },
+    {
+        "path": "05-ML/10-Natural-Language-Processing/Recap",
+        "repo": "lewagon-data/bad_reviews_analysis"
+    },
+    {
+        "path": "06-Deep-Learning/01-Fundamentals-of-Deep-Learning/01-Playground",
+        "repo": "lewagon-data/playground"
+    },
+    {
+        "path": "06-Deep-Learning/01-Fundamentals-of-Deep-Learning/02-Your-first-Neural-Network",
+        "repo": "lewagon-data/your-first-neural-network"
+    },
+    {
+        "path": "06-Deep-Learning/01-Fundamentals-of-Deep-Learning/03-Multiclass-classification",
+        "repo": "lewagon-data/multiclass-classification"
+    },
+    {
+        "path": "06-Deep-Learning/01-Fundamentals-of-Deep-Learning/04-Houses-Kaggle-Competition-Bis",
+        "repo": "lewagon-data/houses-kaggle-competition-bis"
+    },
+    {
+        "path": "06-Deep-Learning/01-Fundamentals-of-Deep-Learning/Recap",
+        "repo": "lewagon-data/tensorflow_demystified"
+    },
+    {
+        "path": "06-Deep-Learning/02-Optimizer-loss-and-fitting/01-Playground-Part-II",
+        "repo": "lewagon-data/playground-part-ii"
+    },
+    {
+        "path": "06-Deep-Learning/02-Optimizer-loss-and-fitting/02-How-to-properly-prevent-overfitting",
+        "repo": "lewagon-data/how-to-properly-prevent-overfitting"
+    },
+    {
+        "path": "06-Deep-Learning/02-Optimizer-loss-and-fitting/03-Finetune-your-Neural-Network",
+        "repo": "lewagon-data/finetune-your-neural-network"
+    },
+    {
+        "path": "06-Deep-Learning/02-Optimizer-loss-and-fitting/04-Credit-Card-Challenge",
+        "repo": "lewagon-data/credit-card-challenge"
+    },
+    {
+        "path": "06-Deep-Learning/02-Optimizer-loss-and-fitting/Recap",
+        "repo": "lewagon-data/pipelines_with_tensorflow"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/01-MNIST-Classification",
+        "repo": "lewagon-data/mnist-classification"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/02-Intuition-on-Convolutions",
+        "repo": "lewagon-data/intuition-on-convolutions"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/03-Cifar-Classification",
+        "repo": "lewagon-data/cifar-classification"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/04-Transfer-Learning",
+        "repo": "lewagon-data/transfer-learning"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/05-Autoencoder",
+        "repo": "lewagon-data/autoencoder"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/Optional-Cifar-100",
+        "repo": "lewagon-data/optional-cifar-100"
+    },
+    {
+        "path": "06-Deep-Learning/03-Convolutional-Neural-Networks/Recap",
+        "repo": "lewagon-data/recap_cnn"
+    },
+    {
+        "path": "06-Deep-Learning/04-Recurrent-Neural-Networks/01-Your-first-RNN",
+        "repo": "lewagon-data/your-first-rnn"
+    },
+    {
+        "path": "06-Deep-Learning/04-Recurrent-Neural-Networks/02-Classify-Electrocardiograms",
+        "repo": "lewagon-data/classify-electrocardiograms"
+    },
+    {
+        "path": "06-Deep-Learning/04-Recurrent-Neural-Networks/03-Predict-air-pollution",
+        "repo": "lewagon-data/predict-air-pollution"
+    },
+    {
+        "path": "06-Deep-Learning/04-Recurrent-Neural-Networks/04-Predict-air-pollution-II",
+        "repo": "lewagon-data/predict-air-pollution-ii"
+    },
+    {
+        "path": "06-Deep-Learning/04-Recurrent-Neural-Networks/Recap",
+        "repo": "lewagon-data/avoid_data_leakage_with_time_series"
+    },
+    {
+        "path": "06-Deep-Learning/05-Natural-Language-Processing/01-Your-First-Embedding",
+        "repo": "lewagon-data/your-first-embedding"
+    },
+    {
+        "path": "06-Deep-Learning/05-Natural-Language-Processing/02-Embeddings-with-Word2vec",
+        "repo": "lewagon-data/embeddings-with-word2vec"
+    },
+    {
+        "path": "06-Deep-Learning/05-Natural-Language-Processing/03-Sentiment-analysis-with-word2vec",
+        "repo": "lewagon-data/sentiment-analysis-with-word2vec"
+    },
+    {
+        "path": "06-Deep-Learning/05-Natural-Language-Processing/04-NLP-with-CNN",
+        "repo": "lewagon-data/nlp-with-cnn"
+    },
+    {
+        "path": "06-Deep-Learning/05-Natural-Language-Processing/05-Letter-generation",
+        "repo": "lewagon-data/letter-generation"
+    },
+    {
+        "path": "06-Deep-Learning/05-Natural-Language-Processing/Recap",
+        "repo": "lewagon-data/wine_price_from_review"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/01-Package-builder",
+        "repo": "lewagon-data/package-builder"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/02-Package-installation",
+        "repo": "lewagon-data/package-installation"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/03-Test-your-code",
+        "repo": "lewagon-data/test-your-code"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/04-Share-your-code",
+        "repo": "lewagon-data/share-your-code"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/05-Build-Your-Toolbox",
+        "repo": "lewagon-data/build-your-toolbox"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/06-Your-First-CI",
+        "repo": "lewagon-data/your-first-ci"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/07-Your-First-CD",
+        "repo": "lewagon-data/your-first-cd"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/08-Scraper-Package",
+        "repo": "lewagon-data/scraper-package"
+    },
+    {
+        "path": "07-Data-Engineering/01-Code-as-a-Product/Recap",
+        "repo": "lewagon-data/package_quizz"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/01-Kaggle-Taxi-Fare",
+        "repo": "lewagon-data/kaggle-taxi-fare"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/02-Taxi-Fare-Pipeline",
+        "repo": "lewagon-data/taxi-fare-pipeline"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/03-Notebook-to-package",
+        "repo": "lewagon-data/notebook-to-package"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/04-MLFlow-quickstart",
+        "repo": "lewagon-data/mlflow-quickstart"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/05-Iterate-with-MLFlow",
+        "repo": "lewagon-data/iterate-with-mlflow"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/06-Kaggle-submission",
+        "repo": "lewagon-data/kaggle-submission"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/07-HyperParameterTuning",
+        "repo": "lewagon-data/hyperparametertuning"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/08-Cloud-Functions",
+        "repo": "lewagon-data/cloud-functions"
+    },
+    {
+        "path": "07-Data-Engineering/02-ML-Iteration/Recap",
+        "repo": "lewagon-data/from_notebook_to_package"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/01-GCP-Setup",
+        "repo": "lewagon-data/gcp-setup"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/02-Submit-training-tasks",
+        "repo": "lewagon-data/submit-training-tasks"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/03-Train-taxiFare-on-gcp",
+        "repo": "lewagon-data/train-taxifare-on-gcp"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/04-Scaling",
+        "repo": "lewagon-data/scaling"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/05-Use-GCP-Power",
+        "repo": "lewagon-data/use-gcp-power"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/06-Google-Colab",
+        "repo": "lewagon-data/google-colab"
+    },
+    {
+        "path": "07-Data-Engineering/03-Train-at-scale/Recap",
+        "repo": "lewagon-data/from_package_to_trained_model"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/01-FastAPI",
+        "repo": "lewagon-data/fastapi"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/02-Docker-image",
+        "repo": "lewagon-data/docker-image"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/03-GCR-cloud-run",
+        "repo": "lewagon-data/gcr-cloud-run"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/07-Cloud-Run-CD",
+        "repo": "lewagon-data/cloud-run-cd"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/04-GCE-compute-engine",
+        "repo": "lewagon-data/gce-compute-engine"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/05-GKE-kubernetes-engine",
+        "repo": "lewagon-data/gke-kubernetes-engine"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/06-GCP-Billing",
+        "repo": "lewagon-data/gcp-billing"
+    },
+    {
+        "path": "07-Data-Engineering/04-Predict-in-production/Recap",
+        "repo": "lewagon-data/from_trained_model_to_live_api"
+    },
+    {
+        "path": "07-Data-Engineering/05-User-interface/01-Add-front-end",
+        "repo": "lewagon-data/add-front-end"
+    },
+    {
+        "path": "07-Data-Engineering/05-User-interface/02-Streamlit-for-restitution",
+        "repo": "lewagon-data/streamlit-for-restitution"
+    }
+]

@@ -1,0 +1,261 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import click
+
+from wagon_myriad.params.params import (
+    COURSE_DATA,
+    TEST_ORG,
+    DEFAULT_REMOTE_NAME,
+    DEFAULT_BRANCH,
+    GHA_EVENT_PUSH)
+
+from wagon_myriad.meta import (
+    gen_challenge_repos,
+    check_sync,
+    generate_meta,
+    sylls_challenges_sanity_check)
+
+from wagon_myriad.stubs.program_stub import gen_program_stub
+
+from wagon_myriad.loader import Loader
+
+
+@click.group()
+def myriad():
+    pass
+
+
+@myriad.command()
+@click.option(
+    "-c", "--course",
+    default=COURSE_DATA,
+    help=f"Select course (default: {COURSE_DATA}).")
+def list(course):
+    """
+    List challenges from meta source
+    """
+
+    loader = Loader(
+        course=course, gha=False,
+        use_meta_repo=True)
+
+    loader.meta_repo.print_syllabus()
+
+
+@myriad.command()
+@click.option(
+    "-g", "--gha/--no-gha",
+    default=False,
+    is_flag=True,
+    help="Run as github action (default: False).")
+@click.option(
+    "-v", "--event",
+    default=GHA_EVENT_PUSH,
+    help=f"Event in gha context (default: {GHA_EVENT_PUSH}).")
+@click.option(
+    "-o", "--organization",
+    default=TEST_ORG,
+    help=f"Select organization (default: {TEST_ORG}).")
+@click.option(
+    "-c", "--course",
+    default=COURSE_DATA,
+    help=f"Select course namespace (default: {COURSE_DATA}).")
+@click.option(
+    "-h", "--head-ref",
+    default=DEFAULT_BRANCH,
+    help=f"Select head ref branch (default: {DEFAULT_BRANCH}).")
+@click.option(
+    "-b", "--base-ref",
+    default=DEFAULT_BRANCH,
+    help=f"Select base ref branch (default: {DEFAULT_BRANCH}).")
+@click.option(
+    "-m", "--base-commit",
+    default=None,
+    help="Last commit before the pushed content (default: None).")
+@click.option(
+    "-n", "--gh-nickname",
+    default=None,
+    help="Select github nickname.")
+@click.option(
+    "-t", "--gh-token",
+    default=None,
+    help="Select github personal access token.")
+@click.option(
+    "-r", "--remote",
+    default=DEFAULT_REMOTE_NAME,
+    help=f"Select remote (default: {DEFAULT_REMOTE_NAME}).")
+@click.option(
+    "-v", "--verbose/--no-verbose",
+    default=False,
+    is_flag=True,
+    help="Verbose mode (default: False).")
+@click.option(
+    "-f", "--force/--no-force",
+    default=None,
+    is_flag=True,
+    help="Overwrites generated myriad directory (default: False).")
+def gen(
+        gha,
+        event,
+        # context
+        organization,         # source gh org name
+        course,               # source gh repo fullname
+        head_ref,             # gha pr head ref, empty otherwise
+        base_ref,             # gha pr base ref or gha push branch
+        base_commit,          # gha push last commit before push content
+        # git params
+        gh_nickname,
+        gh_token,
+        # local tests
+        remote,               # local tests, origin for gha
+        verbose,              # local tests
+        force):               # local tests
+    """
+    Generate challenge repositories
+    """
+
+    loader = Loader(
+        gha=gha, organization=organization, course=course,
+        gh_nickname=gh_nickname, gh_token=gh_token,
+        use_dot_repo=True)
+
+    # generate challenge repos
+    gen_challenge_repos(
+        event=event,
+        syllabus=loader.dot_repo.syllabus,
+        is_prod=loader.loader_conf.is_prod,
+        solutions_repo_path=loader.loader_conf.solutions_repo_path,
+        # context
+        head_ref=head_ref,
+        base_ref=base_ref,
+        base_commit=base_commit,
+        # git params
+        git_user_name=loader.loader_conf.git_user_name,
+        git_user_email=loader.loader_conf.git_user_email,
+        gh_nickname=loader.loader_conf.gh_nickname,
+        gh_token=loader.loader_conf.gh_token,
+        # local tests
+        remote=remote,
+        param_verbose=verbose,
+        force=force)
+
+
+@myriad.command()
+def ver():
+    """
+    Verify discrepancies between myriad repo and gh sync yaml in meta repo
+    """
+
+    # check sync
+    check_sync()
+
+
+@myriad.command()
+@click.option(
+    "-c", "--course",
+    default=COURSE_DATA,
+    help=f"Select course (default: {COURSE_DATA}).")
+@click.option(
+    "-f", "--force/--no-force",
+    default=None,
+    is_flag=True,
+    help="Overwrite existing challenge output gh repo fullname in individual solution directories (default: False).")
+def meta(course, force):
+    """
+    Generate meta directory and default file in individual solution directories
+    """
+
+    loader = Loader(
+        course=course, gha=False,
+        use_meta_repo=True)
+
+    # generate meta
+    generate_meta(loader.meta_repo.syllabus, course, force)
+
+
+@myriad.command()
+@click.option(
+    "-c", "--course",
+    default=COURSE_DATA,
+    help=f"Select course (default: {COURSE_DATA}).")
+@click.option(
+    "-g", "--gha/--no-gha",
+    default=False,
+    is_flag=True,
+    help="Run as github action (default: False).")
+def synchronized(course, gha):
+    """
+    Validates challenge sync between meta repo and dot syllabus
+    """
+
+    # sanity check to validate that the challenges
+    # in the meta syllabus correspond to the ones in the dot syllabus
+    loader = Loader(
+        course=course, gha=gha,
+        use_meta_repo=True,
+        use_dot_repo=True,
+        use_lal_repo=True,
+        use_md_repo=True)
+
+    sylls_challenges_sanity_check(
+        loader.meta_repo.syllabus,
+        loader.dot_repo.syllabus,
+        loader.look_alike_repo.syllabus,
+        loader.readme_repo.syllabus)
+
+
+@myriad.command()
+@click.option(
+    "-c", "--course",
+    default=COURSE_DATA,
+    help=f"Select course (default: {COURSE_DATA}).")
+@click.option(
+    "-g", "--gha/--no-gha",
+    default=False,
+    is_flag=True,
+    help="Run as github action (default: False).")
+@click.option(
+    "-p", "--list-path/--no-list-path",
+    default=False,
+    is_flag=True,
+    help="List challenge path with repo name (default: False).")
+def unicity(course, gha, list_path):
+    """
+    Validates challenge target repo unicity
+    """
+
+    # sanity check to validate that the repo names
+    # in the challenge metadata are unique per course
+    loader = Loader(
+        course=course, gha=gha,
+        use_dot_repo=True)
+
+    loader.dot_repo.check_unicity(list_path=list_path)
+
+
+@myriad.command()
+@click.option(
+    "-c", "--course",
+    default=COURSE_DATA,
+    help=f"Select course (default: {COURSE_DATA}).")
+def stub(course):
+    """
+    Generate program syllabus content stub for student clone tool
+    """
+
+    # load meta data syllabus
+    loader = Loader(
+        course=course,
+        use_meta_repo=True,
+        use_dot_repo=True)
+
+    # generate stub
+    gen_program_stub(
+        course=course,
+        meta_syllabus=loader.meta_repo.syllabus,
+        dot_syllabus=loader.dot_repo.syllabus)
+
+
+if __name__ == '__main__':
+    myriad()
