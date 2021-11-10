@@ -17,11 +17,17 @@ pip uninstall -y challengify
 pip uninstall -y wagon_common
 ```
 
+# aliases
+
+``` bash
+alias myr="myriad $@"
+```
+
 # setup
 
 copy `.env.sample` to `.env` and provide a valid gh personal token with repo read access
 
-the command assumes that the following repos live in the same directory:
+🚨 the command assumes that the following repos live in the same directory:
 - utils
 - data-meta
 - data-solutions
