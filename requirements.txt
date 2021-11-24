@@ -3,3 +3,6 @@ click
 colorama
 pyyaml
 requests
+
+wagon_common
+challengify

@@ -4,33 +4,13 @@
 from gemfury with `~/.pip/pip.conf`:
 
 ``` bash
-pip install wagon_common
-pip install challengify
 pip install myriad
-```
-
-from gemfury with index url:
-
-``` bash
-pip install wagon_common --extra-index-url https://$GEMFURY_PULL_TOKEN@pypi.fury.io/ssaunier
-pip install challengify --extra-index-url https://$GEMFURY_PULL_TOKEN@pypi.fury.io/ssaunier
-pip install myriad --extra-index-url https://$GEMFURY_PULL_TOKEN@pypi.fury.io/ssaunier
-```
-
-from github:
-
-``` bash
-pip install git+ssh://git@github.com/lewagon/python-utilities.git
-pip install git+ssh://git@github.com/lewagon/challengify.git
-pip install git+ssh://git@github.com/lewagon/myriad.git
 ```
 
 # uninstall
 
 ``` bash
 pip uninstall -y myriad
-pip uninstall -y challengify
-pip uninstall -y wagon_common
 ```
 
 # aliases
