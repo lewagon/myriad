@@ -13,5 +13,6 @@ setup(name="myriad",
       author="Sébastien Saunier",
       author_email="seb@lewagon.org",
       packages=find_packages(),
+      include_package_data=True,  # use MANIFEST.in
       install_requires=requirements,
       scripts=[os.path.join("scripts", "myriad")])
