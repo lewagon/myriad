@@ -1,10 +1,20 @@
 
 # install
 
-from gemfury:
+from gemfury with `~/.pip/pip.conf`:
 
 ``` bash
+pip install wagon_common
+pip install challengify
 pip install myriad
+```
+
+from gemfury with index url:
+
+``` bash
+pip install wagon_common --extra-index-url https://$GEMFURY_PULL_TOKEN@pypi.fury.io/ssaunier
+pip install challengify --extra-index-url https://$GEMFURY_PULL_TOKEN@pypi.fury.io/ssaunier
+pip install myriad --extra-index-url https://$GEMFURY_PULL_TOKEN@pypi.fury.io/ssaunier
 ```
 
 from github:
