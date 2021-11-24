@@ -1,7 +1,13 @@
 
 # install
 
-🚨 `wagon_common` and `challengify` are required as a dependency but are not yet published to PyPI and need to be manually installed first
+from gemfury:
+
+``` bash
+pip install myriad
+```
+
+from github:
 
 ``` bash
 pip install git+ssh://git@github.com/lewagon/python-utilities.git
