@@ -1,9 +1,29 @@
 
+# install
+
+from gemfury with `~/.pip/pip.conf`:
+
+``` bash
+pip install myriad
+```
+
+# uninstall
+
+``` bash
+pip uninstall -y myriad
+```
+
+# aliases
+
+``` bash
+alias myr="myriad $@"
+```
+
 # setup
 
 copy `.env.sample` to `.env` and provide a valid gh personal token with repo read access
 
-the command assumes that the following repos live in the same directory:
+🚨 the command assumes that the following repos live in the same directory:
 - utils
 - data-meta
 - data-solutions
