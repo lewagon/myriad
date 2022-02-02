@@ -5,9 +5,10 @@ on:
     types: [published, edited]
 
 jobs:
-  build-and-publish-package:
+  publish-on-release:
     runs-on: ubuntu-latest
     steps:
+
       - name: Checkout repository
         uses: actions/checkout@v2
 
@@ -34,6 +35,4 @@ jobs:
           retention-days: 5
 
       - name: Publish Package
-        env:
-          GEMFURY_PUSH_TOKEN: ${{ secrets.GEMFURY_PUSH_TOKEN }}
         run: curl -F package=@${{ steps.prep.outputs.build_path }} https://${{ secrets.GEMFURY_PUSH_TOKEN }}@push.fury.io/ssaunier/
