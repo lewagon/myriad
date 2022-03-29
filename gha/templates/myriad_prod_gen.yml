@@ -40,6 +40,11 @@ jobs:
           else
             MYRIAD_BASE_REF="${{ github.ref_name }}"
           fi
+          if [[ ("${{ secrets.VERBOSE }}" == "True") || ("${{ secrets.VERBOSE }}" == "true") ]]; then
+            VERBOSE="--verbose"
+          else
+            VERBOSE=""
+          fi
           myriad gen \
             --gha \
             --event "$GITHUB_EVENT_NAME" \
@@ -48,4 +53,5 @@ jobs:
             --head-ref "$GITHUB_HEAD_REF" \
             --base-ref "$MYRIAD_BASE_REF" \
             --gh-nickname "${{ secrets.USERNAME }}" \
-            --gh-token "${{ secrets.TOKEN }}"
+            --gh-token "${{ secrets.TOKEN }}" \
+            $(echo $VERBOSE)
