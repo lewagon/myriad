@@ -98,7 +98,9 @@ commits created with user name `github-actions` and email `github-actions@github
 ## force generate or resync the myriad challenges
 
 create a PR that adds to the content the `gha/templates/myriad-prod-gen.yml` GHA as `.github/workflows/myriad-prod-gen.yml`
+
 use a branch name containing `--myriad-force`, for example `force-gen--myriad-force--verbose` if you also want verbose info level in the GHA
+
 the PR does not need to be merged, the GHA will run as soon as the PR is created and will start to generate or resync the challenges
 
 # supported challenge patterns
