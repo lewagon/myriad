@@ -110,6 +110,12 @@ the PR does not need to be merged, the GHA will run as soon as the PR is created
 - `01-Staff/01-Steff/Recap/some/content/there.md`
 - `01-Staff/01-Steff/some/content/there.md`
 
+# challengify ignore files
+
+myriad handles the global content repo challengify `.syncignore` and `.challengifyignore` files:
+- duplicates them to the per challenge temporary sync repo before the sync to the myriad challenge occurs
+- edits the content of the file to remove the relative path to the challenge from the rules
+
 # goal
 
 create a sync process for individual challenges from data-solutions to individual myriad repositories
