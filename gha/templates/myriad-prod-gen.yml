@@ -1,0 +1,57 @@
+name: Myriad Gen
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  myriad-gen:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Add pipconf
+        run: |
+          mkdir ~/.pip
+          cat << EOF >> ~/.pip/pip.conf
+          [global]
+          trusted-host = pypi.fury.io
+          extra-index-url = https://${{ secrets.GEMFURY_PULL_TOKEN }}@pypi.fury.io/ssaunier
+          EOF
+
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install wagon_common challengify myriad
+
+      - name: Generate myriads
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            MYRIAD_BASE_REF="$GITHUB_BASE_REF"
+          else
+            MYRIAD_BASE_REF="${{ github.ref_name }}"
+          fi
+          if [[ ("${{ secrets.VERBOSE }}" == "True") || ("${{ secrets.VERBOSE }}" == "true") ]]; then
+            VERBOSE="--verbose"
+          else
+            VERBOSE=""
+          fi
+          myriad gen \
+            --gha \
+            --event "$GITHUB_EVENT_NAME" \
+            --organization "$GITHUB_REPOSITORY_OWNER" \
+            --course "$GITHUB_REPOSITORY" \
+            --head-ref "$GITHUB_HEAD_REF" \
+            --base-ref "$MYRIAD_BASE_REF" \
+            --gh-nickname "${{ secrets.USERNAME }}" \
+            --gh-token "${{ secrets.TOKEN }}" \
+            $(echo $VERBOSE)

@@ -95,12 +95,26 @@ the overwrite option will fail if the commit goes back in history to a point whe
 
 commits created with user name `github-actions` and email `github-actions@github.com`
 
+## force generate or resync the myriad challenges
+
+create a PR that adds to the content the `gha/templates/myriad-prod-gen.yml` GHA as `.github/workflows/myriad-prod-gen.yml`
+
+use a branch name containing `--myriad-force`, for example `force-gen--myriad-force--verbose` if you also want verbose info level in the GHA
+
+the PR does not need to be merged, the GHA will run as soon as the PR is created and will start to generate or resync the challenges
+
 # supported challenge patterns
 
 - `01-Staff/01-Steff/01-Stiff/some/content/there.md`
 - `01-Staff/01-Steff/Optional-Stiff/some/content/there.md`
 - `01-Staff/01-Steff/Recap/some/content/there.md`
 - `01-Staff/01-Steff/some/content/there.md`
+
+# challengify ignore files
+
+myriad handles the global content repo challengify `.syncignore` and `.challengifyignore` files:
+- duplicates them to the per challenge temporary sync repo before the sync to the myriad challenge occurs
+- edits the content of the file to remove the relative path to the challenge from the rules
 
 # goal
 
