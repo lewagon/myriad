@@ -1,4 +1,3 @@
-
 import os
 
 from colorama import Fore, Style
@@ -93,21 +92,15 @@ class LoaderConf:
         if not gha:
 
             if use_meta_repo:
-
-                # the meta repo is expected to be there
-                self.meta_repo_path = os.path.relpath(os.path.join(
-                    os.path.dirname(__file__),
-                    "..", "..", "..", "..",
-                    f"{course}-meta"))
+                # The meta repo should be at $HOME/code/lewagon/
+                self.meta_repo_path = os.path.relpath(
+                    os.path.join(os.getenv('HOME'), 'code', PROD_ORG, f"{course}-meta"))
 
                 self.meta_github_repo = None
 
-            # so is the solutions repo
-            self.solutions_repo_path = os.path.relpath(os.path.join(
-                os.path.dirname(__file__),
-                "..", "..", "..", "..",
-                f"{course}-solutions"))
-
+            # so the solutions repo
+            self.solutions_repo_path = os.path.relpath(
+                    os.path.join(os.getenv('HOME'), 'code', PROD_ORG, f"{course}-solutions"))
         else:
 
             # the meta repo needs to be cloned
