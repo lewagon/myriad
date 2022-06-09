@@ -54,7 +54,7 @@ myriad list                   # output parsed syllabus
 
 ## generate myriads
 
-Generate myriads 🚨 IN THE **TEST** ORGANISATION 🚨 please 🙏
+⚠️ Generate myriads 🚨 IN THE **TEST** ORGANISATION 🚨 please 🙏
 
 Requirements:
 - Add commits (branch does not matter) to the content
