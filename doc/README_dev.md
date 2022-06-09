@@ -51,9 +51,7 @@ myriad unicity -p             # list challenges and check for unicity
 myriad list                   # output parsed syllabus
 ```
 
-## tests
-
-### generate myriads
+## generate myriads
 
 Generate myriads 🚨 in the **test** organisation 🚨 for the commited content regarding to `master` (or any other sha):
 
