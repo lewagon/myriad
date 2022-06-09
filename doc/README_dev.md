@@ -67,5 +67,5 @@ myriad gen -o lewagon-test -m master
 
 myriad gen -o lewagon-test -m master -v  # verbose mode
 
-# myriad gen --gha -c lewagon-test/data-solutions -m master
+# myriad gen --gha -c lewagon-test/data-solutions -m master  # gha mode TBV
 ```
