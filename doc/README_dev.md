@@ -12,7 +12,7 @@
 
 ⚠️ We recommand to create a dedicated root directory because myriad will:
 - Clone myriad repositories at the same level as the solutions repository
-- Add `.git` repositories to all challenges having synchronized content
+- Add `.git` repositories to all challenges having synchronized content within the solutions repository
 
 Setup the repository structure:
 
