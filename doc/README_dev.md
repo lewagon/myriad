@@ -34,7 +34,8 @@ Setup the repository structure:
 Install the packages in editable mode (the `myriad` script will be running the cloned code):
 
 ``` bash
-cd ~/code/lewagon-myriad/challengify && pip install -e .
+# cd ~/code/lewagon-myriad/challengify && pip install -e .  # latest version not running with myriad at the moment
+pip install challengify==0.3.1
 cd ~/code/lewagon-myriad/myriad && pip install -e .
 cd ~/code/lewagon-myriad/python-utilities && pip install -e .
 ```
@@ -53,12 +54,18 @@ myriad list                   # output parsed syllabus
 
 ## generate myriads
 
-Generate myriads 🚨 in the **test** organisation 🚨 for the commited content regarding to `master` (or any other sha):
+Generate myriads 🚨 in the **test** organisation 🚨
+
+Requirements:
+- Add commits (branch does not matter) to the content
+- Reference the last known commit sha in the `-m` param (here `master`)
 
 ``` bash
 cd ~/code/lewagon-myriad/data-solutions
 
 myriad gen -o lewagon-test -m master
 
-myriad gen --gha -c lewagon-test/data-solutions -m master
+myriad gen -o lewagon-test -m master -v  # verbose mode
+
+# myriad gen --gha -c lewagon-test/data-solutions -m master
 ```
