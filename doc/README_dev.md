@@ -40,7 +40,7 @@ You should be able to run a few commands:
 ``` bash
 cd ~/code/lewagon/data-solutions
 myriad --help                 # list sub commands
-myriad unicity -p             # list challenges and checks for unicity
+myriad unicity -p             # list challenges and check for unicity
 myriad list                   # output parsed syllabus
 ```
 
@@ -48,7 +48,7 @@ myriad list                   # output parsed syllabus
 
 ### generate myriads
 
-Generate myriads for commited content regarding to `master` (or any other sha):
+Generate myriads 🚨 in the **test** organisation 🚨 for the commited content regarding to `master` (or any other sha):
 
 ``` bash
 cd ~/code/lewagon/data-solutions
