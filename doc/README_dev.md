@@ -10,19 +10,25 @@
 
 ### directory structure
 
+⚠️ We recommand to create a dedicated root directory because myriad will:
+- Clone myriad repositories at the same level as the solutions repository
+- Add `.git` repositories to all challenges having synchronized content
+
 Setup the repository structure:
 
 ``` bash
-.
-├── challengify
-├── data-challenges
-├── data-meta
-├── data-solutions
-├── fullstack-challenges
-├── fullstack-meta
-├── fullstack-solutions
-├── myriad
-└── python-utilities          # wagon_common
+.                                       # ~
+└── code
+    └── lewagon-myriad
+        ├── challengify
+        ├── data-challenges
+        ├── data-meta
+        ├── data-solutions
+        ├── fullstack-challenges
+        ├── fullstack-meta
+        ├── fullstack-solutions
+        ├── myriad
+        └── python-utilities            # wagon_common
 ```
 
 Install the packages in editable mode (the `myriad` script will be running the cloned code):
@@ -39,6 +45,7 @@ You should be able to run a few commands:
 
 ``` bash
 cd ~/code/lewagon/data-solutions
+
 myriad --help                 # list sub commands
 myriad unicity -p             # list challenges and check for unicity
 myriad list                   # output parsed syllabus
@@ -52,5 +59,8 @@ Generate myriads 🚨 in the **test** organisation 🚨 for the commited content
 
 ``` bash
 cd ~/code/lewagon/data-solutions
+
 myriad gen -o lewagon-test -m master
+
+myriad gen --gha -c lewagon-test/data-solutions -m master
 ```
