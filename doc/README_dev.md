@@ -34,9 +34,9 @@ Setup the repository structure:
 Install the packages in editable mode (the `myriad` script will be running the cloned code):
 
 ``` bash
-cd ~/code/lewagon/challengify && pip install -e .
-cd ~/code/lewagon/myriad && pip install -e .
-cd ~/code/lewagon/python-utilities && pip install -e .
+cd ~/code/lewagon-myriad/challengify && pip install -e .
+cd ~/code/lewagon-myriad/myriad && pip install -e .
+cd ~/code/lewagon-myriad/python-utilities && pip install -e .
 ```
 
 ## info
@@ -44,7 +44,7 @@ cd ~/code/lewagon/python-utilities && pip install -e .
 You should be able to run a few commands:
 
 ``` bash
-cd ~/code/lewagon/data-solutions
+cd ~/code/lewagon-myriad/data-solutions
 
 myriad --help                 # list sub commands
 myriad unicity -p             # list challenges and check for unicity
@@ -56,7 +56,7 @@ myriad list                   # output parsed syllabus
 Generate myriads 🚨 in the **test** organisation 🚨 for the commited content regarding to `master` (or any other sha):
 
 ``` bash
-cd ~/code/lewagon/data-solutions
+cd ~/code/lewagon-myriad/data-solutions
 
 myriad gen -o lewagon-test -m master
 
