@@ -6,10 +6,13 @@ from wagon_common.helpers.subprocess import run_command
 
 def challengify_service(path, destination, verbose=False):
     """
-    challengify the challenge at provided path
+    Challengify a challenge
+    path - source path (the solution to challengify)
+    destination - destination path for the challengified files
     """
 
     # build relative destination path
+    # PAVEL: WHY?
     destination_path = os.path.join(
         "..", os.path.basename(destination))
 

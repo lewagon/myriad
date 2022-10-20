@@ -26,6 +26,7 @@ from wagon_common.helpers.git.push import git_push
 from wagon_common.helpers.git.config import git_config
 from wagon_common.helpers.git.commit import get_latest_commit
 from wagon_common.helpers.git.checkout import checkout_branch
+from wagon_common.helpers.git.branch import rename_branch
 
 
 def gha_generate_challenge_repositories(
@@ -242,7 +243,7 @@ def gha_generate_challenge_repositories(
 
             # write updated file
             with open(destination_ignore_path, "w") as file:
-
+                ### PAVEL: `content` doesn't persist between `with` statements
                 file.write("".join(content))
 
         print("- retrieve latest commit")
@@ -333,7 +334,7 @@ def gha_generate_challenge_repositories(
                 challengified_repo_path,
                 commit_message,
                 verbose=verbose)
-
+        ### PAVEL: no check for rc2
         if rc != 0:
 
             print(Fore.RED
@@ -345,6 +346,21 @@ def gha_generate_challenge_repositories(
                   + f"\n- commit return code: {rc2}"
                   + f"\n- commit output: {output2}"
                   + f"\n- commit error: {error2}")
+
+            exit(1)
+
+        # Rename branch (will keep it master if it's already master)
+        print("- renaming branch")
+        rc, output, error = rename_branch(challengified_repo_path, base_ref)
+
+        if rc != 0:
+
+            print(Fore.RED
+                  + "\nError during renaming branch 🤯"
+                  + Style.RESET_ALL
+                  + f"\n- return code: {rc}"
+                  + f"\n- output: {output}"
+                  + f"\n- error: {error}")
 
             exit(1)
 
