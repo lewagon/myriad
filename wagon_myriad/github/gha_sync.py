@@ -370,7 +370,7 @@ def gha_generate_challenge_repositories(
         rc, output, error = git_push(
             challengified_repo_path,
             base_ref,
-            force=overwrite_sha is not None,
+            force=True,
             verbose=verbose)
 
         if rc != 0:
