@@ -12,7 +12,6 @@ def challengify_service(path, destination, verbose=False):
     """
 
     # build relative destination path
-    # PAVEL: WHY?
     destination_path = os.path.join(
         "..", os.path.basename(destination))
 

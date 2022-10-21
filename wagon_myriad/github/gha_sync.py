@@ -243,7 +243,7 @@ def gha_generate_challenge_repositories(
 
             # write updated file
             with open(destination_ignore_path, "w") as file:
-                ### PAVEL: `content` doesn't persist between `with` statements
+                
                 file.write("".join(content))
 
         print("- retrieve latest commit")
