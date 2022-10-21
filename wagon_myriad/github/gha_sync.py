@@ -350,19 +350,22 @@ def gha_generate_challenge_repositories(
             exit(1)
 
         # Rename branch (will keep it master if it's already master)
-        print("- renaming branch")
-        rc, output, error = rename_branch(challengified_repo_path, base_ref)
+        if base_ref == "HEAD":
+            print("- on master branch, not renaming")
+        else:
+            print("- renaming branch")
+            rc, output, error = rename_branch(challengified_repo_path, base_ref)
 
-        if rc != 0:
+            if rc != 0:
 
-            print(Fore.RED
-                  + "\nError during renaming branch 🤯"
-                  + Style.RESET_ALL
-                  + f"\n- return code: {rc}"
-                  + f"\n- output: {output}"
-                  + f"\n- error: {error}")
+                print(Fore.RED
+                      + "\nError during renaming branch 🤯"
+                      + Style.RESET_ALL
+                      + f"\n- return code: {rc}"
+                      + f"\n- output: {output}"
+                      + f"\n- error: {error}")
 
-            exit(1)
+                exit(1)
 
         print("- push code to gh repo")
 
