@@ -21,7 +21,7 @@ brew install act
 
 ## assert : base repo
 
-- wait for `myriad-container` gha to run on `lewagon-test/gha-solutions`
+- wait for `myriad` gha to run on `lewagon-test/gha-solutions`
 
 - clone `lewagon-test/gha-challenge` repo locally to `tests/tmp/gha-challenge`
 - control the content of the cloned repo according to `tests/integration/control/gha-challenge`
@@ -34,7 +34,7 @@ brew install act
 
 ## assert : pull request
 
-- wait for `myriad-container` gha to run on `lewagon-test/gha-solutions`
+- wait for `myriad` gha to run on `lewagon-test/gha-solutions`
 
 - pull from `lewagon-test/gha-challenge`
 - control the content of the cloned repo according to `tests/integration/control/gha-challenge-pr`
