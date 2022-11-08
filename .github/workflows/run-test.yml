@@ -1,0 +1,36 @@
+name: "Run Test"
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Add pipconf
+        run: |
+          mkdir ~/.pip
+          cat << EOF >> ~/.pip/pip.conf
+          [global]
+          trusted-host = pypi.fury.io
+          extra-index-url = https://${{ secrets.GEMFURY_PULL_TOKEN }}@pypi.fury.io/ssaunier
+          EOF
+
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install -e .
+
+      - name: Install package and test
+        run: |
+          make pytest
