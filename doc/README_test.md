@@ -7,6 +7,14 @@ brew install act
 
 # test scenario
 
+## prerequisites
+
+`lewagon-data` org wide conf:
+- `secrets.GEMFURY_PULL_TOKEN`: gemfury token
+- `secrets.VERBOSE`: optional
+- `secrets.USERNAME`: github nickname
+- `secrets.TOKEN`: github personal access token with **repo** + **admin:org** + **workflow** scopes
+
 ## arrange
 
 - create local `tests/tmp/gha-solutions` repo
