@@ -17,43 +17,43 @@ brew install act
 
 ## arrange
 
-- delete `lewagon-test/gha-solutions` repo if exists
-- delete `lewagon-test/gha-challenge` repo if exists
+- delete `Le-Wagon-QA/gha-solutions` repo if exists
+- delete `Le-Wagon-QA/gha-challenge` repo if exists
 
 - create git repo in `tests/data/myriad_gha/source/gha-solutions`
-- add remote to `lewagon-test/gha-solutions`
+- add remote to `Le-Wagon-QA/gha-solutions`
 
 ## act : base repo
 
-- push to `lewagon-test/gha-solutions`
+- push to `Le-Wagon-QA/gha-solutions`
 - 👆 requires token with workflow credential
 
 ## assert : base repo
 
-- wait for `myriad` gha to run on `lewagon-test/gha-solutions`
+- wait for `myriad` gha to run on `Le-Wagon-QA/gha-solutions`
 - ping created repo using gh api
 
-- clone `lewagon-test/gha-challenge` repo locally to `tests/tmp/gha-challenge`
+- clone `Le-Wagon-QA/gha-challenge` repo locally to `tests/tmp/gha-challenge`
 - control the content of the cloned repo according to `tests/data/myriad_gha/control/gha-challenge`
 
 ## act : pull request
 
 - add change to `gha-solutions` repo from `tests/data/myriad_gha/source/gha-solutions-pr`
 - 👆 move .git dir
-- push to `lewagon-test/gha-solutions`
+- push to `Le-Wagon-QA/gha-solutions`
 
 ## assert : pull request
 
-- wait for `myriad` gha to run on `lewagon-test/gha-solutions`
+- wait for `myriad` gha to run on `Le-Wagon-QA/gha-solutions`
 - ping created repo using gh api - wait for second commit
 
-- pull from `lewagon-test/gha-challenge`
+- pull from `Le-Wagon-QA/gha-challenge`
 - control the content of the cloned repo according to `tests/data/myriad_gha/control/gha-challenge-pr`
 
 ## cleanup
 
-- delete `lewagon-test/gha-solutions` repo
-- delete `lewagon-test/gha-challenge` repo
+- delete `Le-Wagon-QA/gha-solutions` repo
+- delete `Le-Wagon-QA/gha-challenge` repo
 
 - delete local `tests/tmp/gha-solutions` repo
 - delete local `tests/tmp/gha-challenge` repo
