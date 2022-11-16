@@ -59,8 +59,8 @@ class TestMyriadGha():
         processed_challenge_repo = GitRepo(processed_challenge_path, verbose=True)
 
         # Act
-        gh_solutions_repo.delete()
-        gh_challenge_repo.delete()
+        gh_solutions_repo.delete(dry_run=False)
+        gh_challenge_repo.delete(dry_run=False)
 
         gh_solutions_repo.create()
 
