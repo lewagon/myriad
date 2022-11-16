@@ -92,6 +92,9 @@ class TestMyriadGha():
         assert rc == 0
 
         # Cleanup
+        gh_solutions_repo.delete(dry_run=False)
+        gh_challenge_repo.delete(dry_run=False)
+
         shutil.rmtree(os.path.join(solutions_repo.path, ".git"), ignore_errors=True)
 
         shutil.rmtree(processed_challenge_repo.path, ignore_errors=True)
