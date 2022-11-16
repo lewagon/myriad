@@ -49,9 +49,9 @@ class TestMyriadGha(unittest.TestCase):
         solutions_repo.remote_add(gh_solutions_repo)
         solutions_repo.push()
 
-        processed_challenge_repo.remote_add(gh_challenge_repo)
-        processed_challenge_repo.wait_for_creation()
-        processed_challenge_repo.clone()
+        gh_challenge_repo.wait_for_creation()
+
+        processed_challenge_repo.clone(gh_challenge_repo)
 
         # Assert
         shutil.rmtree(os.path.join(processed_challenge_repo.path, ".git"), ignore_errors=True)
