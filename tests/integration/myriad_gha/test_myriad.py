@@ -38,7 +38,7 @@ class TestMyriadGha(unittest.TestCase):
         solutions_repo = GitRepo(gha_solutions_path)
         solutions_repo.init()
         solutions_repo.commit(message="initial commit")
-        solutions_repo.remote_add("origin", gh_solutions_repo.name)
+        solutions_repo.remote_add(gh_solutions_repo)
 
         # Act
         solutions_repo.push()
