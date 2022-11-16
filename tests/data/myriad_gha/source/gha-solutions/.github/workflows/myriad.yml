@@ -32,7 +32,8 @@ jobs:
         run: |
           pip install -U pip
           pip install git+https://gmanchon:${{ secrets.GMANCHON_DEV_TOKEN }}@github.com/lewagon/python-utilities.git@git-repos
-          pip install challengify==0.3.1 myriad
+          pip install git+https://gmanchon:${{ secrets.GMANCHON_DEV_TOKEN }}@github.com/lewagon/myriad.git@gha-test
+          pip install challengify==0.3.1
           # pip install wagon_common challengify==0.3.1 myriad
 
       - name: Generate myriads
