@@ -43,16 +43,16 @@ class TestMyriadGha():
         control_path = os.path.join(data_path, "control")
         processed_path = os.path.join(data_path, "processed")
 
-        gha_solutions_path = os.path.join(source_path, "gha-solutions")
-        control_challenge_path = os.path.join(control_path, "gha-challenge")
-        processed_challenge_path = os.path.join(processed_path, "gha-challenge")
+        gha_solutions_path = os.path.join(source_path, "qa-solutions")
+        control_challenge_path = os.path.join(control_path, "qa-challenge")
+        processed_challenge_path = os.path.join(processed_path, "qa-challenge")
 
-        # gha_solutions_pr_path = os.path.join(source_path, "gha-solutions-pr")
-        # control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
-        # processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
+        # gha_solutions_pr_path = os.path.join(source_path, "qa-solutions-pr")
+        # control_challenge_pr_path = os.path.join(control_path, "qa-challenge-pr")
+        # processed_challenge_pr_path = os.path.join(processed_path, "qa-challenge-pr")
 
-        gh_solutions_repo = GhRepo("lewagon-qa/gha-solutions", token=token, verbose=True)
-        gh_challenge_repo = GhRepo("lewagon-qa/gha-challenge", token=token, verbose=True)
+        gh_solutions_repo = GhRepo("lewagon-qa/qa-solutions", token=token, verbose=True)
+        gh_challenge_repo = GhRepo("lewagon-qa/qa-challenge", token=token, verbose=True)
 
         solutions_repo = GitRepo(gha_solutions_path, verbose=True)
 

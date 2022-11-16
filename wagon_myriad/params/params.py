@@ -20,7 +20,7 @@ COURSE_LIST = [
     COURSE_WEB]
 
 GHA_COURSE_CONVERSION = {
-    f"{QA_ORG}/gha-solutions": COURSE_QA,
+    f"{QA_ORG}/qa-solutions": COURSE_QA,
     f"{TEST_ORG}/data-solutions": COURSE_DATA,
     f"{TEST_ORG}/fullstack-solutions": COURSE_WEB,
     f"{PROD_ORG}/data-solutions": COURSE_DATA,
