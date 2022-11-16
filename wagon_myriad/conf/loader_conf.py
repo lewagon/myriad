@@ -55,13 +55,13 @@ class LoaderConf:
             self.course = course
 
         # validate parameters
-        if course not in PROD_COURSE_ORG.keys():
+        if course not in COURSE_LIST:
 
             print(Fore.RED
                   + "\nInvalid course parameter 🤒"
                   + Style.RESET_ALL
                   + f"\ncourse: {course}"
-                  + f"\nsupported courses: {' '.join(PROD_COURSE_ORG.keys())}")
+                  + f"\nsupported courses: {' '.join(COURSE_LIST)}")
 
             raise ValueError(f"Invalid course: {course}")
 
