@@ -74,10 +74,6 @@ class TestMyriadGha():
         solutions_repo.remote_add(gh_solutions_repo, https=True)
         solutions_repo.set_remote_branch()
 
-        # solutions_repo.checkout()
-        # solutions_repo.push(branch="master")
-        # solutions_repo.push(branch="master", set_upstream=True)
-
         gh_challenge_repo.wait_for_creation()
 
         processed_challenge_repo.clone(gh_challenge_repo)
