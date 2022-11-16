@@ -22,12 +22,16 @@ class TestMyriadGha(unittest.TestCase):
         data_path = os.path.join("tests", "data", "myriad_gha")
         source_path = os.path.join(data_path, "source")
         control_path = os.path.join(data_path, "control")
+        processed_path = os.path.join(data_path, "processed")
 
         gha_solutions_path = os.path.join(source_path, "gha-solutions")
         gha_solutions_pr_path = os.path.join(source_path, "gha-solutions-pr")
 
-        gha_challenge_path = os.path.join(control_path, "gha-challenge")
-        gha_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
+        control_challenge_path = os.path.join(control_path, "gha-challenge")
+        control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
+
+        processed_challenge_path = os.path.join(processed_path, "gha-challenge")
+        processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
 
         gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions")
         gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge")
@@ -44,18 +48,16 @@ class TestMyriadGha(unittest.TestCase):
         solutions_repo.remote_add(gh_solutions_repo)
         solutions_repo.push()
 
-        # 🔥 TODO
+        processed_challenge_repo = GitRepo(processed_challenge_path)
 
-        # Assert
-        control_challenge_repo = GitRepo(gha_challenge_path)
-
-        processed_challenge_repo = GitRepo(gha_challenge_path_TODO)
         processed_challenge_repo.remote_add(gh_challenge_repo)
         processed_challenge_repo.wait_for_creation()
         processed_challenge_repo.clone()
 
+        # Assert
+        shutil.rmtree(os.path.join(processed_challenge_repo.path, ".git"), ignore_errors=True)
 
-        rc, output, error = are_directories_identical(out_path, control_path)
+        rc, output, error = are_directories_identical(processed_challenge_repo.path, control_challenge_path)
 
         if rc != 0:
 
@@ -75,7 +77,9 @@ class TestMyriadGha(unittest.TestCase):
         # assert rc == 0
 
         # Cleanup
-        shutil.rmtree(out_path, ignore_errors=True)
+        shutil.rmtree(os.path.join(solutions_repo.path, ".git"), ignore_errors=True)
+
+        shutil.rmtree(processed_challenge_repo.path, ignore_errors=True)
 
 
 if __name__ == '__main__':
