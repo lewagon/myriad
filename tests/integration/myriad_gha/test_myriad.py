@@ -64,6 +64,9 @@ class TestMyriadGha():
 
         gh_solutions_repo.create()
 
+        solutions_repo.config_user_name()
+        solutions_repo.config_user_email()
+
         solutions_repo.init()
         solutions_repo.add()
         solutions_repo.commit(message="initial commit")
