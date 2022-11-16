@@ -1,5 +1,6 @@
 
 # the source org defines whether the process runs in prod
+QA_ORG = "lewagon-qa"
 TEST_ORG = "lewagon-test"
 PROD_ORG = "lewagon"
 
@@ -17,6 +18,7 @@ COURSE_LIST = [
     COURSE_WEB]
 
 GHA_COURSE_CONVERSION = {
+    f"{QA_ORG}/gha-solutions": COURSE_DATA,
     f"{TEST_ORG}/data-solutions": COURSE_DATA,
     f"{TEST_ORG}/fullstack-solutions": COURSE_WEB,
     f"{PROD_ORG}/data-solutions": COURSE_DATA,

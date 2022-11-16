@@ -40,12 +40,12 @@ class LoaderConf:
             if course not in GHA_COURSE_CONVERSION.keys():
 
                 print(Fore.RED
-                      + "\nUknown course 🤒"
+                      + "\nUnknown course 🤒"
                       + Style.RESET_ALL
                       + f"\n- course: {course}"
                       + f"\n- known courses: {GHA_COURSE_CONVERSION.keys()}")
 
-                raise ValueError(f"Invalid course: {course}")
+                raise ValueError(f"Invalid conv course: {course}")
 
             # convert course
             course = GHA_COURSE_CONVERSION[course]

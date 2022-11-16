@@ -51,8 +51,8 @@ class TestMyriadGha():
         # control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
         # processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
 
-        gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions", token=token, verbose=True)
-        gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge", token=token, verbose=True)
+        gh_solutions_repo = GhRepo("lewagon-qa/gha-solutions", token=token, verbose=True)
+        gh_challenge_repo = GhRepo("lewagon-qa/gha-challenge", token=token, verbose=True)
 
         solutions_repo = GitRepo(gha_solutions_path, verbose=True)
 
