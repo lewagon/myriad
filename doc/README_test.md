@@ -26,43 +26,43 @@ brew install act
 
 ## arrange
 
-- delete `lewagon-qa/gha-solutions` repo if exists
-- delete `lewagon-qa/gha-challenge` repo if exists
+- delete `lewagon-qa/qa-solutions` repo if exists
+- delete `lewagon-qa/qa-challenge` repo if exists
 
-- create git repo in `tests/data/myriad_gha/source/gha-solutions`
-- add remote to `lewagon-qa/gha-solutions`
+- create git repo in `tests/data/myriad_gha/source/qa-solutions`
+- add remote to `lewagon-qa/qa-solutions`
 
 ## act : base repo
 
-- push to `lewagon-qa/gha-solutions`
+- push to `lewagon-qa/qa-solutions`
 - 👆 requires action using token with workflow credential
 
 ## assert : base repo
 
-- wait for `myriad` gha to run on `lewagon-qa/gha-solutions`
+- wait for `myriad` gha to run on `lewagon-qa/qa-solutions`
 - ping created repo using gh api
 
-- clone `lewagon-qa/gha-challenge` repo locally to `tests/tmp/gha-challenge`
-- control the content of the cloned repo according to `tests/data/myriad_gha/control/gha-challenge`
+- clone `lewagon-qa/qa-challenge` repo locally to `tests/tmp/qa-challenge`
+- control the content of the cloned repo according to `tests/data/myriad_gha/control/qa-challenge`
 
 ## act : pull request
 
-- add change to `gha-solutions` repo from `tests/data/myriad_gha/source/gha-solutions-pr`
+- add change to `qa-solutions` repo from `tests/data/myriad_gha/source/qa-solutions-pr`
 - 👆 move .git dir
-- push to `lewagon-qa/gha-solutions`
+- push to `lewagon-qa/qa-solutions`
 
 ## assert : pull request
 
-- wait for `myriad` gha to run on `lewagon-qa/gha-solutions`
+- wait for `myriad` gha to run on `lewagon-qa/qa-solutions`
 - ping created repo using gh api - wait for second commit
 
-- pull from `lewagon-qa/gha-challenge`
-- control the content of the cloned repo according to `tests/data/myriad_gha/control/gha-challenge-pr`
+- pull from `lewagon-qa/qa-challenge`
+- control the content of the cloned repo according to `tests/data/myriad_gha/control/qa-challenge-pr`
 
 ## cleanup
 
-- delete `lewagon-qa/gha-solutions` repo
-- delete `lewagon-qa/gha-challenge` repo
+- delete `lewagon-qa/qa-solutions` repo
+- delete `lewagon-qa/qa-challenge` repo
 
-- delete local `tests/tmp/gha-solutions` repo
-- delete local `tests/tmp/gha-challenge` repo
+- delete local `tests/tmp/qa-solutions` repo
+- delete local `tests/tmp/qa-challenge` repo
