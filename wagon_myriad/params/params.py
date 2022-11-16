@@ -33,6 +33,7 @@ COURSE_ORG = dict(
     fullstack="lewagon-test")
 
 PROD_COURSE_ORG = dict(
+    qa="lewagon-qa",
     data="lewagon-data",
     fullstack="lewagon-web")
 
