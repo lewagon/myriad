@@ -68,7 +68,8 @@ class TestMyriadGha():
         solutions_repo.config_user_email()
 
         solutions_repo.init()
-        solutions_repo.checkout()
+        # solutions_repo.checkout()
+        solutions_repo.set_branch()
         solutions_repo.add()
         solutions_repo.commit(message="initial commit")
         solutions_repo.remote_add(gh_solutions_repo, https=True)
