@@ -28,12 +28,13 @@ GHA_COURSE_CONVERSION = {
 
 # legacy org selection
 COURSE_ORG = dict(
-    qa="lewagon-qa",
     data="lewagon-test",
     fullstack="lewagon-test")
 
+QA_COURSE_ORG = dict(
+    qa="lewagon-qa")
+
 PROD_COURSE_ORG = dict(
-    qa="lewagon-qa",
     data="lewagon-data",
     fullstack="lewagon-web")
 

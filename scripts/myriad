@@ -125,6 +125,7 @@ def gen(
         event=event,
         syllabus=loader.dot_repo.syllabus,
         is_prod=loader.loader_conf.is_prod,
+        is_qa=loader.loader_conf.is_qa,
         solutions_repo_path=loader.loader_conf.solutions_repo_path,
         # context
         head_ref=head_ref,

@@ -4,7 +4,7 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
-    PROD_ORG,
+    PROD_ORG, QA_ORG,
     GHA_COURSE_CONVERSION,
     COURSE_ORG, PROD_COURSE_ORG,
     GHA_META_REPOS)
@@ -33,6 +33,7 @@ class LoaderConf:
 
         # only valid if org is provided
         self.is_prod = self.organization == PROD_ORG
+        self.is_qa = self.organization == QA_ORG
 
         # convert course parameter passed in gha context
         if gha:
@@ -65,7 +66,12 @@ class LoaderConf:
             raise ValueError(f"Invalid course: {course}")
 
         # retrieve github organisation
-        org_selector = PROD_COURSE_ORG if self.is_prod else COURSE_ORG
+        if self.is_prod:
+            org_selector = PROD_COURSE_ORG
+        elif self.is_qa:
+            org_selector = QA_COURSE_ORG
+        else:
+            org_selector = COURSE_ORG
 
         self.myriad_org = org_selector[course]
 
