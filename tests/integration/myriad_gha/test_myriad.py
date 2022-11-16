@@ -32,12 +32,12 @@ class TestMyriadGha(unittest.TestCase):
         # control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
         # processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
 
-        gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions")
-        gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge")
+        gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions", verbose=True)
+        gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge", verbose=True)
 
-        solutions_repo = GitRepo(gha_solutions_path)
+        solutions_repo = GitRepo(gha_solutions_path, verbose=True)
 
-        processed_challenge_repo = GitRepo(processed_challenge_path)
+        processed_challenge_repo = GitRepo(processed_challenge_path, verbose=True)
 
         # Act
         gh_solutions_repo.delete()
