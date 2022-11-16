@@ -12,6 +12,7 @@ brew install act
 - `GMANCHON_DEV_TOKEN`: in order to allow to pull non released versions of wagon_common, challengify, myriad
 - `USERNAME`: required by the Myriad GHA
 - `TOKEN`: required by the Myriad GHA
+- `VERBOSE`: run the Myriad GHA in verbose mode
 
 # test scenario
 
