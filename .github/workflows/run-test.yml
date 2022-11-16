@@ -32,5 +32,7 @@ jobs:
           pip install -e .
 
       - name: Install package and test
+        env:
+          GITHUB_PERSONAL_ACCESS_TOKEN: ${{ secrets.AUTOBOT_QA_ADMIN_TOKEN }}
         run: |
           make pytest
