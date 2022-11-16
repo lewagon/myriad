@@ -65,10 +65,11 @@ class TestMyriadGha():
         gh_solutions_repo.create()
 
         solutions_repo.init()
-        # solutions_repo.add()
+        solutions_repo.add()
         solutions_repo.commit(message="initial commit")
         solutions_repo.remote_add(gh_solutions_repo, https=True)
         # solutions_repo.set_remote_branch()
+        solutions_repo.push(branch="master")
         solutions_repo.push(branch="master", set_upstream=True)
 
         gh_challenge_repo.wait_for_creation()
