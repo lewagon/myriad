@@ -39,6 +39,7 @@ PROD_COURSE_ORG = dict(
 
 # legacy process
 GHA_META_REPOS = dict(
+    qa=("lewagon", "data-meta"),  # invalid but unused
     data=("lewagon", "data-meta"),
     fullstack=("lewagon", "fullstack-meta"))
 
