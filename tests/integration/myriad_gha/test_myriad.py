@@ -30,17 +30,18 @@ class TestMyriadGha(unittest.TestCase):
         gha_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
 
         gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions")
-        gh_solutions_repo.delete()
-
         gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge")
-        gh_challenge_repo.delete()
 
         solutions_repo = GitRepo(gha_solutions_path)
-        solutions_repo.init()
-        solutions_repo.commit(message="initial commit")
-        solutions_repo.remote_add(gh_solutions_repo)
 
         # Act
+        gh_solutions_repo.delete()
+        gh_challenge_repo.delete()
+
+        solutions_repo.init()
+        solutions_repo.add()
+        solutions_repo.commit(message="initial commit")
+        solutions_repo.remote_add(gh_solutions_repo)
         solutions_repo.push()
 
         # 🔥 TODO
@@ -49,7 +50,7 @@ class TestMyriadGha(unittest.TestCase):
         control_challenge_repo = GitRepo(gha_challenge_path)
 
         processed_challenge_repo = GitRepo(gha_challenge_path_TODO)
-        processed_challenge_repo.remote_add("origin", gh_challenge_repo.name)
+        processed_challenge_repo.remote_add(gh_challenge_repo)
         processed_challenge_repo.wait_for_creation()
         processed_challenge_repo.clone()
 
