@@ -29,10 +29,10 @@ class TestMyriadGha(unittest.TestCase):
         gha_challenge_path = os.path.join(control_path, "gha-challenge")
         gha_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
 
-        gh_solutions_repo = GhRepo("Le-Wagon-QA/gha-solutions")
+        gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions")
         gh_solutions_repo.delete()
 
-        gh_challenge_repo = GhRepo("Le-Wagon-QA/gha-challenge")
+        gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge")
         gh_challenge_repo.delete()
 
         solutions_repo = GitRepo(gha_solutions_path)
