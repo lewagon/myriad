@@ -10,15 +10,17 @@ BRANCH_MYRIAD_FORCE = "--myriad-force"
 BRANCH_MYRIAD_OVERWRITE = "--myriad-overwrite-"
 
 # legacy list of supported courses
+COURSE_QA = "qa"
 COURSE_DATA = "data"
 COURSE_WEB = "fullstack"
 
 COURSE_LIST = [
+    COURSE_QA,
     COURSE_DATA,
     COURSE_WEB]
 
 GHA_COURSE_CONVERSION = {
-    f"{QA_ORG}/gha-solutions": COURSE_DATA,
+    f"{QA_ORG}/gha-solutions": COURSE_QA,
     f"{TEST_ORG}/data-solutions": COURSE_DATA,
     f"{TEST_ORG}/fullstack-solutions": COURSE_WEB,
     f"{PROD_ORG}/data-solutions": COURSE_DATA,
@@ -26,6 +28,7 @@ GHA_COURSE_CONVERSION = {
 
 # legacy org selection
 COURSE_ORG = dict(
+    qa="lewagon-qa",
     data="lewagon-test",
     fullstack="lewagon-test")
 
