@@ -6,7 +6,7 @@ from colorama import Fore, Style
 from wagon_myriad.params.params import (
     PROD_ORG, QA_ORG,
     GHA_COURSE_CONVERSION, COURSE_LIST,
-    COURSE_ORG, PROD_COURSE_ORG,
+    QA_COURSE_ORG, COURSE_ORG, PROD_COURSE_ORG,
     GHA_META_REPOS)
 
 from wagon_myriad.params.git import GHA_GIT_USER_NAME, GHA_GIT_USER_EMAIL
