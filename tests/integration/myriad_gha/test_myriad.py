@@ -38,6 +38,8 @@ class TestMyriadGha(unittest.TestCase):
 
         solutions_repo = GitRepo(gha_solutions_path)
 
+        processed_challenge_repo = GitRepo(processed_challenge_path)
+
         # Act
         gh_solutions_repo.delete()
         gh_challenge_repo.delete()
@@ -47,8 +49,6 @@ class TestMyriadGha(unittest.TestCase):
         solutions_repo.commit(message="initial commit")
         solutions_repo.remote_add(gh_solutions_repo)
         solutions_repo.push()
-
-        processed_challenge_repo = GitRepo(processed_challenge_path)
 
         processed_challenge_repo.remote_add(gh_challenge_repo)
         processed_challenge_repo.wait_for_creation()
