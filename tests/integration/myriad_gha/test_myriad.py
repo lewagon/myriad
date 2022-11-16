@@ -43,6 +43,8 @@ class TestMyriadGha(unittest.TestCase):
         gh_solutions_repo.delete()
         gh_challenge_repo.delete()
 
+        gh_solutions_repo.create()
+
         solutions_repo.init()
         # solutions_repo.add()
         solutions_repo.commit(message="initial commit")
