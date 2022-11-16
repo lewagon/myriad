@@ -25,13 +25,12 @@ class TestMyriadGha(unittest.TestCase):
         processed_path = os.path.join(data_path, "processed")
 
         gha_solutions_path = os.path.join(source_path, "gha-solutions")
-        gha_solutions_pr_path = os.path.join(source_path, "gha-solutions-pr")
-
         control_challenge_path = os.path.join(control_path, "gha-challenge")
-        control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
-
         processed_challenge_path = os.path.join(processed_path, "gha-challenge")
-        processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
+
+        # gha_solutions_pr_path = os.path.join(source_path, "gha-solutions-pr")
+        # control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
+        # processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
 
         gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions")
         gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge")
@@ -69,12 +68,7 @@ class TestMyriadGha(unittest.TestCase):
                   + f"\n- error: {error}")
             print(output.decode("utf-8"))
 
-        # test does not work yet
-        #
-        # unable to ignore the relative position of the source dir
-        # and to generate the challenge precisely in the control dir
-
-        # assert rc == 0
+        assert rc == 0
 
         # Cleanup
         shutil.rmtree(os.path.join(solutions_repo.path, ".git"), ignore_errors=True)
