@@ -15,7 +15,7 @@ import pytest
 from dotenv import load_dotenv, find_dotenv
 
 
-class TestMyriadGha(unittest.TestCase):
+class TestMyriadGha():
     """
     test that myriad challenges are correctly generated from source codebase
     """
@@ -35,7 +35,7 @@ class TestMyriadGha(unittest.TestCase):
 
         # Cleanup
 
-    def test_myriad_gha(self):
+    def test_myriad_gha(self, token):
 
         # Arrange
         data_path = os.path.join("tests", "data", "myriad_gha")
@@ -51,8 +51,8 @@ class TestMyriadGha(unittest.TestCase):
         # control_challenge_pr_path = os.path.join(control_path, "gha-challenge-pr")
         # processed_challenge_pr_path = os.path.join(processed_path, "gha-challenge-pr")
 
-        gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions", verbose=True)
-        gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge", verbose=True)
+        gh_solutions_repo = GhRepo("le-wagon-qa/gha-solutions", token=token, verbose=True)
+        gh_challenge_repo = GhRepo("le-wagon-qa/gha-challenge", token=token, verbose=True)
 
         solutions_repo = GitRepo(gha_solutions_path, verbose=True)
 
@@ -95,7 +95,3 @@ class TestMyriadGha(unittest.TestCase):
         shutil.rmtree(os.path.join(solutions_repo.path, ".git"), ignore_errors=True)
 
         shutil.rmtree(processed_challenge_repo.path, ignore_errors=True)
-
-
-if __name__ == '__main__':
-    unittest.main()
