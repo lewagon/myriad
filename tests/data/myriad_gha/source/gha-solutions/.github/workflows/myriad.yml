@@ -55,5 +55,5 @@ jobs:
             $(echo $MYRIAD_BASE_COMMIT_OPTION) \
             --gh-nickname "${{ secrets.USERNAME }}" \
             --gh-token "${{ secrets.TOKEN }}" \
-            --verbose
-            # $(echo $VERBOSE)
+            --verbose \
+            --force
