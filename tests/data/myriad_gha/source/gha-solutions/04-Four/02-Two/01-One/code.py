@@ -1,7 +1,7 @@
 print("before")
 
-# $CHA_BEGIN
+# $CHALLENGIFY_BEGIN
 bla bla bla
-# $CHA_END
+# $CHALLENGIFY_END
 
 print("after")
