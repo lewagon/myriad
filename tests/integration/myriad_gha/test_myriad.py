@@ -10,11 +10,30 @@ import shutil
 
 from colorama import Fore, Style
 
+import pytest
+
+from dotenv import load_dotenv, find_dotenv
+
 
 class TestMyriadGha(unittest.TestCase):
     """
     test that myriad challenges are correctly generated from source codebase
     """
+
+    @pytest.fixture
+    def token(self):
+        """
+        fetch gh token to perform the tests
+        """
+
+        # Arrange
+        load_dotenv(find_dotenv())
+        token = os.environ.get("GITHUB_PERSONAL_ACCESS_TOKEN")
+
+        # Act & Assert
+        yield token
+
+        # Cleanup
 
     def test_myriad_gha(self):
 
