@@ -26,7 +26,7 @@ brew install act
 ## act : base repo
 
 - push to `le-wagon-qa/gha-solutions`
-- 👆 requires token with workflow credential
+- 👆 requires action using token with workflow credential
 
 ## assert : base repo
 
