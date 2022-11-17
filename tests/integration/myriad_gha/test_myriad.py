@@ -43,7 +43,7 @@ class TestMyriadGha():
         control_path = os.path.join(data_path, "control")
         processed_path = os.path.join(data_path, "processed")
 
-        gha_solutions_path = os.path.join(source_path, "qa-solutions")
+        solutions_path = os.path.join(source_path, "qa-solutions")
         control_challenge_path = os.path.join(control_path, "qa-challenge")
         processed_challenge_path = os.path.join(processed_path, "qa-challenge")
 
@@ -51,37 +51,37 @@ class TestMyriadGha():
         # control_challenge_pr_path = os.path.join(control_path, "qa-challenge-pr")
         # processed_challenge_pr_path = os.path.join(processed_path, "qa-challenge-pr")
 
-        gh_solutions_repo = GhRepo("lewagon-qa/qa-solutions", token=token, verbose=True)
-        gh_challenge_repo = GhRepo("lewagon-qa/qa-challenge", token=token, verbose=True)
+        qa_solutions = GhRepo("lewagon-qa/qa-solutions", token=token, verbose=True)
+        qa_challenge = GhRepo("lewagon-qa/qa-challenge", token=token, verbose=True)
 
-        solutions_repo = GitRepo(gha_solutions_path, verbose=True)
+        solutions = GitRepo(solutions_path, verbose=True)
 
-        processed_challenge_repo = GitRepo(processed_challenge_path, verbose=True)
+        processed_challenge = GitRepo(processed_challenge_path, verbose=True)
 
         # Act
-        gh_solutions_repo.delete(dry_run=False)
-        gh_challenge_repo.delete(dry_run=False)
+        qa_solutions.delete(dry_run=False)
+        qa_challenge.delete(dry_run=False)
 
-        gh_solutions_repo.create()
+        qa_solutions.create()
 
-        solutions_repo.config_user_name()
-        solutions_repo.config_user_email()
+        solutions.config_user_name()
+        solutions.config_user_email()
 
-        solutions_repo.init()
-        solutions_repo.add()
-        solutions_repo.commit(message="initial commit")
-        solutions_repo.set_branch()
-        solutions_repo.remote_add(gh_solutions_repo, https=True)
-        solutions_repo.set_remote_branch()
+        solutions.init()
+        solutions.add()
+        solutions.commit(message="initial commit")
+        solutions.set_branch()
+        solutions.remote_add(qa_solutions, https=True)
+        solutions.set_remote_branch()
 
-        gh_challenge_repo.wait_for_creation()
+        qa_challenge.wait_for_creation()
 
-        processed_challenge_repo.clone(gh_challenge_repo)
+        processed_challenge.clone(qa_challenge)
 
         # Assert
-        shutil.rmtree(os.path.join(processed_challenge_repo.path, ".git"), ignore_errors=True)
+        shutil.rmtree(os.path.join(processed_challenge.path, ".git"), ignore_errors=True)
 
-        rc, output, error = are_directories_identical(processed_challenge_repo.path, control_challenge_path)
+        rc, output, error = are_directories_identical(processed_challenge.path, control_challenge_path)
 
         if rc != 0:
 
@@ -96,9 +96,9 @@ class TestMyriadGha():
         assert rc == 0
 
         # Cleanup
-        gh_solutions_repo.delete(dry_run=False)
-        gh_challenge_repo.delete(dry_run=False)
+        qa_solutions.delete(dry_run=False)
+        qa_challenge.delete(dry_run=False)
 
-        shutil.rmtree(os.path.join(solutions_repo.path, ".git"), ignore_errors=True)
+        shutil.rmtree(os.path.join(solutions.path, ".git"), ignore_errors=True)
 
-        shutil.rmtree(processed_challenge_repo.path, ignore_errors=True)
+        shutil.rmtree(processed_challenge.path, ignore_errors=True)
