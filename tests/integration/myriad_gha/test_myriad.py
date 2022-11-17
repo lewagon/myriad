@@ -3,8 +3,6 @@ from wagon_common.git.git_repo import GitRepo
 from wagon_common.gh.gh_repo import GhRepo
 from wagon_common.helpers.directories import are_directories_identical
 
-import unittest
-
 import os
 import shutil
 
