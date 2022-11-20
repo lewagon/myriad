@@ -19,6 +19,28 @@ pip uninstall -y myriad
 alias myr="myriad $@"
 ```
 
+# code environment & parameters
+
+## myriad
+
+git commit          `GIT_USER_NAME` + `GIT_USER_EMAIL`
+
+git push            `USERNAME` + `TOKEN`
+                    => `GIT_PUSH_TOKEN` 🔥
+                    **repo** + **workflow**
+
+gh create           `GITHUB_NICKNAME` + `GITHUB_PERSONAL_ACCESS_TOKEN`
+                    => `GH_API_CREATE_TOKEN` 🔥
+                    `lewagon-data` admin access with scope:
+                    **admin:org** + **repo** + **workflow**
+
+## tests
+
+gh delete           `GITHUB_NICKNAME` + `GITHUB_PERSONAL_ACCESS_TOKEN`
+                    => `GH_API_DELETE_TOKEN` 🔥
+                    `lewagon-data` admin access with scope:
+                    **delete_repo** + **admin:org** + **repo** + **workflow**
+
 # setup
 
 copy `.env.sample` to `.env` and provide a valid gh personal token with repo read access
