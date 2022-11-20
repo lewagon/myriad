@@ -65,11 +65,11 @@ class TestMyriadGha():
         solutions.config_user_name(os.environ["GIT_USER_NAME"])
         solutions.config_user_email(os.environ["GIT_USER_EMAIL"])
 
-        solutions.init()
+        solutions.init(initial_branch="master")
         solutions.add()
         solutions.commit(message="initial commit")
-        solutions.remote_add(qa_solutions, https=True, username="gmanchon")
-        solutions.push()
+        solutions.remote_add(qa_solutions, https=True)
+        solutions.push(branch="master")
 
         qa_challenge.wait_for_creation()
 
