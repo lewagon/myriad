@@ -45,11 +45,6 @@ jobs:
         run: |
           MYRIAD_BASE_REF="${{ github.ref_name }}"
           MYRIAD_BASE_COMMIT_OPTION="--base-commit ${{ github.event.before }}"
-          if [[ ("${{ secrets.VERBOSE }}" == "True") || ("${{ secrets.VERBOSE }}" == "true") ]]; then
-            VERBOSE="--verbose"
-          else
-            VERBOSE=""
-          fi
           myriad gen \
             --gha \
             --event "$GITHUB_EVENT_NAME" \
