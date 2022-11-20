@@ -39,3 +39,6 @@ jobs:
           GH_API_DELETE_TOKEN: ${{ secrets.GH_API_DELETE_TOKEN }}
         run: |
           make pytest
+
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
