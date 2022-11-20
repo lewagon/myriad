@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/python-utilities.git@git-repos
+          pip install git+https://${{ secrets.TOKEN }}@github.com/lewagon/python-utilities.git@git-repos
           pip install -e .
 
       - name: Install package and test
