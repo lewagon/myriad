@@ -62,9 +62,6 @@ class TestMyriadGha():
 
         qa_solutions.create()
 
-        solutions.config_user_name(os.environ["GIT_USER_NAME"])
-        solutions.config_user_email(os.environ["GIT_USER_EMAIL"])
-
         solutions.init(initial_branch="master")
         solutions.add()
         solutions.commit(message="initial commit")
