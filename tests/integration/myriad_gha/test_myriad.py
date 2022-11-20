@@ -62,7 +62,7 @@ class TestMyriadGha():
         solutions.init(initial_branch="master")
         solutions.add()
         solutions.commit(message="initial commit")
-        solutions.remote_add(qa_solutions, https=True)
+        solutions.remote_add(qa_solutions)
         solutions.push(branch="master")
 
         qa_challenge.wait_for_creation()
