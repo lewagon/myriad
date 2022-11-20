@@ -33,7 +33,7 @@ def gha_generate_challenge_repositories(
         base_ref, is_prod, is_qa,
         solutions_repo_path,
         git_user_name, git_user_email,
-        gh_nickname, gh_token,
+        git_token, gh_token,
         overwrite_sha=None,
         verbose=False):
     """
@@ -44,7 +44,7 @@ def gha_generate_challenge_repositories(
           + "\n- auth to gh")
 
     # conf gh auth
-    conf_gh_auth(git_user_name, git_user_email, gh_nickname, gh_token)
+    conf_gh_auth(git_user_name, git_user_email, gh_token)
 
     # overwrite sha
     if overwrite_sha is not None:
@@ -114,7 +114,7 @@ def gha_generate_challenge_repositories(
 
             challenge_github_repo = GitHubRepo(
                 org=challenge.github_nickname, repo=challenge.repo_name,
-                username=gh_nickname, token=gh_token)
+                token=git_token)
 
             challenge_github_repo.clone(cloned_repo_path, verbose=verbose)
 
@@ -178,9 +178,7 @@ def gha_generate_challenge_repositories(
             print("- add remote")
 
             # build remote url
-            repo_url = github_url(
-                challenge.challenge_output,
-                username=gh_nickname, token=gh_token)
+            repo_url = github_url(challenge.challenge_output, token=git_token)
 
             # add remote
             rc, output, error = git_remote_add(
@@ -388,7 +386,7 @@ def gha_generate_challenge_repositories(
             exit(1)
 
 
-def conf_gh_auth(git_user_name, git_user_email, gh_nickname, gh_token):
+def conf_gh_auth(git_user_name, git_user_email, gh_token):
 
     # conf git username
     rc, output, error = git_config("user.name", git_user_name)
@@ -419,7 +417,7 @@ def conf_gh_auth(git_user_name, git_user_email, gh_nickname, gh_token):
         exit(1)
 
     # gh auth
-    rc, output, error = gh_auth(gh_token)  # gh_nickname unused
+    rc, output, error = gh_auth(gh_token)
 
     if rc != 0:
 

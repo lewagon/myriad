@@ -74,14 +74,6 @@ def list(course):
     default=None,
     help="Last commit before the pushed content (default: None).")
 @click.option(
-    "-n", "--gh-nickname",
-    default=None,
-    help="Select github nickname.")
-@click.option(
-    "-t", "--gh-token",
-    default=None,
-    help="Select github personal access token.")
-@click.option(
     "-r", "--remote",
     default=DEFAULT_REMOTE_NAME,
     help=f"Select remote (default: {DEFAULT_REMOTE_NAME}).")
@@ -104,9 +96,6 @@ def gen(
         head_ref,             # gha pr head ref, empty otherwise
         base_ref,             # gha pr base ref or gha push branch
         base_commit,          # gha push last commit before push content
-        # git params
-        gh_nickname,
-        gh_token,
         # local tests
         remote,               # local tests, origin for gha
         verbose,              # local tests
@@ -117,7 +106,6 @@ def gen(
 
     loader = Loader(
         gha=gha, organization=organization, course=course,
-        gh_nickname=gh_nickname, gh_token=gh_token,
         use_dot_repo=True)
 
     # generate challenge repos
@@ -134,7 +122,7 @@ def gen(
         # git params
         git_user_name=loader.loader_conf.git_user_name,
         git_user_email=loader.loader_conf.git_user_email,
-        gh_nickname=loader.loader_conf.gh_nickname,
+        git_token=loader.loader_conf.git_token,
         gh_token=loader.loader_conf.gh_token,
         # local tests
         remote=remote,

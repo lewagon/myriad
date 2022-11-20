@@ -9,8 +9,6 @@ from wagon_myriad.params.params import (
     QA_COURSE_ORG, COURSE_ORG, PROD_COURSE_ORG,
     GHA_META_REPOS)
 
-from wagon_myriad.params.git import GHA_GIT_USER_NAME, GHA_GIT_USER_EMAIL
-
 from wagon_myriad.github.auth import load_gh_auth
 
 from wagon_common.helpers.gh.url import GitHubRepo
@@ -24,7 +22,6 @@ class LoaderConf:
 
     def __init__(
             self, gha: bool, organization: str, course: str,
-            gh_nickname: str, gh_token: str,
             use_meta_repo: bool = False):
 
         self.gha = gha
@@ -75,25 +72,12 @@ class LoaderConf:
 
         self.myriad_org = org_selector[course]
 
-        # handle git and gh credentials
-        if gha:
-
-            # set git params for gha
-            self.git_user_name = GHA_GIT_USER_NAME
-            self.git_user_email = GHA_GIT_USER_EMAIL
-
-            # stored gh nickname and token from params
-            self.gh_nickname = gh_nickname
-            self.gh_token = gh_token
-
-        else:
-
-            # load git and gh params from dot env
-            (
-                self.git_user_name,
-                self.git_user_email,
-                self.gh_nickname,
-                self.gh_token) = load_gh_auth()
+        # load git and gh credentials from dot env
+        (
+            self.git_user_name,
+            self.git_user_email,
+            self.git_token,
+            self.gh_token) = load_gh_auth()
 
         # build meta and solutions conf
         if not gha:
@@ -126,8 +110,7 @@ class LoaderConf:
                     meta_repo))
 
                 self.meta_github_repo = GitHubRepo(
-                    org=meta_org, repo=meta_repo,
-                    username=self.gh_nickname, token=self.gh_token)
+                    org=meta_org, repo=meta_repo, token=self.gh_token)
 
                 self.meta_github_repo.clone(self.meta_repo_path)
 
