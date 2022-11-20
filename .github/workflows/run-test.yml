@@ -29,13 +29,13 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install git+https://${{ secrets.TOKEN }}@github.com/lewagon/python-utilities.git@git-repos
+          pip install git+https://${{ secrets.GIT_PULL_TOKEN }}@github.com/lewagon/python-utilities.git@git-repos
           pip install -e .
 
       - name: Install package and test
         env:
           GIT_USER_NAME: github-actions
           GIT_USER_EMAIL: github-actions@github.com
-          GH_API_DELETE_TOKEN: ${{ secrets.AUTOBOT_QA_ADMIN_TOKEN }}
+          GH_API_DELETE_TOKEN: ${{ secrets.GH_API_DELETE_TOKEN }}
         run: |
           make pytest
