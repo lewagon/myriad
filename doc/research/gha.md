@@ -20,6 +20,12 @@ on gha context, push to gh repo fails on the newly init local git repo
 ❌ try to clone repo with full history
 ❌   - with depth 0
 
-1. clone empty repo and switch .git dir
-2. debug using gha tool to understand the context & diff between git init and git clone
-3. try manually cloning the repo
+✅ missing global git config prevents commit:
+   - git config --global user.name
+   - git config --global user.email
+
+other alternatives:
+
+1. tmate debug
+2. try manually cloning the repo in another location
+3. clone empty repo and switch .git dir
