@@ -37,6 +37,11 @@ jobs:
           # pip install wagon_common challengify==0.3.1 myriad
 
       - name: Generate myriads
+        env:
+          GIT_USER_NAME: github-actions
+          GIT_USER_EMAIL: github-actions@github.com
+          GIT_PUSH_TOKEN: ${{ secrets.AUTOBOT_QA_ADMIN_TOKEN }}
+          GH_API_CREATE_TOKEN: ${{ secrets.AUTOBOT_QA_ADMIN_TOKEN }}
         run: |
           MYRIAD_BASE_REF="${{ github.ref_name }}"
           MYRIAD_BASE_COMMIT_OPTION="--base-commit ${{ github.event.before }}"
@@ -53,7 +58,5 @@ jobs:
             --head-ref "$GITHUB_HEAD_REF" \
             --base-ref "$MYRIAD_BASE_REF" \
             $(echo $MYRIAD_BASE_COMMIT_OPTION) \
-            --gh-nickname "${{ secrets.USERNAME }}" \
-            --gh-token "${{ secrets.TOKEN }}" \
             --verbose \
             --force
