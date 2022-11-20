@@ -18,6 +18,11 @@ class TestMyriadGha():
     test that myriad challenges are correctly generated from source codebase
     """
 
+    data_path = os.path.join("tests", "data", "myriad_gha")
+    source_path = os.path.join(data_path, "source")
+    control_path = os.path.join(data_path, "control")
+    processed_path = os.path.join(data_path, "processed")
+
     @pytest.fixture
     def token(self):
         """
@@ -36,18 +41,10 @@ class TestMyriadGha():
     def test_myriad_gha(self, token):
 
         # Arrange
-        data_path = os.path.join("tests", "data", "myriad_gha")
-        source_path = os.path.join(data_path, "source")
-        control_path = os.path.join(data_path, "control")
-        processed_path = os.path.join(data_path, "processed")
 
-        solutions_path = os.path.join(source_path, "qa-solutions")
-        control_challenge_path = os.path.join(control_path, "qa-challenge")
-        processed_challenge_path = os.path.join(processed_path, "qa-challenge")
-
-        # gha_solutions_pr_path = os.path.join(source_path, "qa-solutions-pr")
-        # control_challenge_pr_path = os.path.join(control_path, "qa-challenge-pr")
-        # processed_challenge_pr_path = os.path.join(processed_path, "qa-challenge-pr")
+        solutions_path = os.path.join(self.source_path, "qa-solutions")
+        control_challenge_path = os.path.join(self.control_path, "qa-challenge")
+        processed_challenge_path = os.path.join(self.processed_path, "qa-challenge")
 
         qa_solutions = GhRepo("lewagon-qa/qa-solutions", token=token, verbose=True)
         qa_challenge = GhRepo("lewagon-qa/qa-challenge", token=token, verbose=True)
