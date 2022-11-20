@@ -62,8 +62,8 @@ class TestMyriadGha():
 
         qa_solutions.create()
 
-        solutions.config_user_name()
-        solutions.config_user_email()
+        solutions.config_user_name(os.environ["GIT_USER_NAME"])
+        solutions.config_user_email(os.environ["GIT_USER_EMAIL"])
 
         solutions.init()
         solutions.add()
