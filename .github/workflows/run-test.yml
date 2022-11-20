@@ -34,9 +34,6 @@ jobs:
           pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/python-utilities.git@git-repos
           pip install -e .
 
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3
-
       - name: Install package and test
         env:
           GIT_USER_NAME: github-actions
