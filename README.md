@@ -24,6 +24,7 @@ alias myr="myriad $@"
 ## myriad
 
 git commit          `GIT_USER_NAME` + `GIT_USER_EMAIL`
+                    **github-actions**  + **github-actions@github.com**
 
 git push            `USERNAME` + `TOKEN`
                     => `GIT_PUSH_TOKEN` 🔥
