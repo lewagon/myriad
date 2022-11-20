@@ -21,7 +21,7 @@ alias myr="myriad $@"
 
 # code environment & parameters
 
-## myriad
+## myriad gha + test myriad gha
 
 git commit          `GIT_USER_NAME` + `GIT_USER_EMAIL`
                     **github-actions**  + **github-actions@github.com**
@@ -30,12 +30,14 @@ git push            `USERNAME` + `TOKEN`
                     => `GIT_PUSH_TOKEN` 🔥
                     **repo** + **workflow**
 
+## myriad gha
+
 gh create           `GITHUB_NICKNAME` + `GITHUB_PERSONAL_ACCESS_TOKEN`
                     => `GH_API_CREATE_TOKEN` 🔥
                     `lewagon-data` admin access with scope:
                     **admin:org** + **repo** + **workflow**
 
-## tests
+## test myriad gha
 
 gh delete           `GITHUB_NICKNAME` + `GITHUB_PERSONAL_ACCESS_TOKEN`
                     => `GH_API_DELETE_TOKEN` 🔥
