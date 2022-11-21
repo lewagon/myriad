@@ -120,8 +120,6 @@ def gen(
         base_ref=base_ref,
         base_commit=base_commit,
         # git params
-        git_user_name=loader.loader_conf.git_user_name,
-        git_user_email=loader.loader_conf.git_user_email,
         git_token=loader.loader_conf.git_token,
         gh_token=loader.loader_conf.gh_token,
         # local tests

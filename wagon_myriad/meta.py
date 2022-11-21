@@ -32,7 +32,7 @@ def gen_challenge_repos(
         event, syllabus, is_prod, is_qa,
         solutions_repo_path,
         head_ref, base_ref, base_commit,
-        git_user_name, git_user_email, git_token, gh_token,
+        git_token, gh_token,
         remote, param_verbose, force):
     """
     generate individual challenge repositories from course repo
@@ -108,7 +108,6 @@ def gen_challenge_repos(
         event=event, challenges=impacted_challenges,
         base_ref=base_ref, is_prod=is_prod, is_qa=is_qa,
         solutions_repo_path=solutions_repo_path,
-        git_user_name=git_user_name, git_user_email=git_user_email,
         git_token=git_token, gh_token=gh_token,
         overwrite_sha=overwrite_sha,
         verbose=verbose)

@@ -43,6 +43,8 @@ jobs:
           GIT_PUSH_TOKEN: ${{ secrets.GIT_PUSH_TOKEN }}
           GH_API_CREATE_TOKEN: ${{ secrets.GH_API_CREATE_TOKEN }}
         run: |
+          git config --global user.name $GIT_USER_NAME
+          git config --global user.email $GIT_USER_EMAIL
           MYRIAD_BASE_REF="${{ github.ref_name }}"
           MYRIAD_BASE_COMMIT_OPTION="--base-commit ${{ github.event.before }}"
           myriad gen \

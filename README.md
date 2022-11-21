@@ -24,6 +24,8 @@ alias myr="myriad $@"
 ## myriad gha + test myriad gha
 
 git commit          `GIT_USER_NAME` + `GIT_USER_EMAIL`
+                    git config --global user.name $GIT_USER_NAME
+                    git config --global user.email $GIT_USER_EMAIL
                     **github-actions**  + **github-actions@github.com**
 
 git push            `GIT_PUSH_TOKEN`

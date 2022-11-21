@@ -23,7 +23,6 @@ from wagon_common.helpers.gh.url import github_url
 from wagon_common.helpers.git.remote import git_remote_add
 from wagon_common.helpers.git.create import git_init, git_add, git_commit
 from wagon_common.helpers.git.push import git_push
-from wagon_common.helpers.git.config import git_config
 from wagon_common.helpers.git.commit import get_latest_commit
 from wagon_common.helpers.git.checkout import checkout_branch
 
@@ -32,7 +31,6 @@ def gha_generate_challenge_repositories(
         event, challenges,
         base_ref, is_prod, is_qa,
         solutions_repo_path,
-        git_user_name, git_user_email,
         git_token, gh_token,
         overwrite_sha=None,
         verbose=False):
@@ -44,7 +42,7 @@ def gha_generate_challenge_repositories(
           + "\n- auth to gh")
 
     # conf gh auth
-    conf_gh_auth(git_user_name, git_user_email, gh_token)
+    conf_gh_auth(gh_token)
 
     # overwrite sha
     if overwrite_sha is not None:
@@ -386,35 +384,7 @@ def gha_generate_challenge_repositories(
             exit(1)
 
 
-def conf_gh_auth(git_user_name, git_user_email, gh_token):
-
-    # conf git username
-    rc, output, error = git_config("user.name", git_user_name)
-
-    if rc != 0:
-
-        print(Fore.RED
-              + "\nUnable to config git username 🤕"
-              + Style.RESET_ALL
-              + f"\n- return code: {rc}"
-              + f"\n- output: {output}"
-              + f"\n- error: {error}")
-
-        exit(1)
-
-    # conf git email
-    rc, output, error = git_config("user.email", git_user_email)
-
-    if rc != 0:
-
-        print(Fore.RED
-              + "\nUnable to config git email 🤕"
-              + Style.RESET_ALL
-              + f"\n- return code: {rc}"
-              + f"\n- output: {output}"
-              + f"\n- error: {error}")
-
-        exit(1)
+def conf_gh_auth(gh_token):
 
     # gh auth
     rc, output, error = gh_auth(gh_token)

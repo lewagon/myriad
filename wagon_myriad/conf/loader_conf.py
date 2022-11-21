@@ -73,11 +73,7 @@ class LoaderConf:
         self.myriad_org = org_selector[course]
 
         # load git and gh credentials from dot env
-        (
-            self.git_user_name,
-            self.git_user_email,
-            self.git_token,
-            self.gh_token) = load_gh_auth()
+        self.git_token, self.gh_token = load_gh_auth()
 
         # build meta and solutions conf
         if not gha:
