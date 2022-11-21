@@ -55,6 +55,7 @@ class TestMyriadGha():
         solutions.commit(message="initial commit")
         solutions.remote_add(qa_solutions)
         solutions.push()
+        solutions.delete_git_dir()
 
         # the `myriad gha` is being triggered on `lewagon-qa/qa-solutions` as a result of the push
         # wait for `lewagon-qa/qa-challenge` to be created as a result of the `myriad gha`
@@ -62,10 +63,9 @@ class TestMyriadGha():
 
         processed_challenge = GitRepo(os.path.join(self.processed_path, "qa-challenge"), verbose=True)
         processed_challenge.clone(qa_challenge)
+        processed_challenge.delete_git_dir()
 
         # Assert
-        shutil.rmtree(os.path.join(processed_challenge.path, ".git"), ignore_errors=True)
-
         control_challenge_path = os.path.join(self.control_path, "qa-challenge")
 
         rc, output, error = are_directories_identical(
@@ -84,9 +84,8 @@ class TestMyriadGha():
         assert rc == 0
 
         # Cleanup
-        qa_solutions.delete(dry_run=False)
+        shutil.rmtree(processed_challenge.path, ignore_errors=True)
+
         qa_challenge.delete(dry_run=False)
 
-        shutil.rmtree(os.path.join(solutions.path, ".git"), ignore_errors=True)
-
-        shutil.rmtree(processed_challenge.path, ignore_errors=True)
+        qa_solutions.delete(dry_run=False)
