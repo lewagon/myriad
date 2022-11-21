@@ -41,38 +41,35 @@ class TestMyriadGha():
     def test_myriad_gha(self, token):
 
         # Arrange
-
-        solutions_path = os.path.join(self.source_path, "qa-solutions")
-        control_challenge_path = os.path.join(self.control_path, "qa-challenge")
-        processed_challenge_path = os.path.join(self.processed_path, "qa-challenge")
-
         qa_solutions = GhRepo("lewagon-qa/qa-solutions", token=token, verbose=True)
-        qa_challenge = GhRepo("lewagon-qa/qa-challenge", token=token, verbose=True)
-
-        solutions = GitRepo(solutions_path, verbose=True)
-
-        processed_challenge = GitRepo(processed_challenge_path, verbose=True)
-
-        # Act
         qa_solutions.delete(dry_run=False)
-        qa_challenge.delete(dry_run=False)
-
         qa_solutions.create()
 
+        qa_challenge = GhRepo("lewagon-qa/qa-challenge", token=token, verbose=True)
+        qa_challenge.delete(dry_run=False)
+
+        # Act
+        solutions = GitRepo(os.path.join(self.source_path, "qa-solutions"), verbose=True)
         solutions.init()
         solutions.add()
         solutions.commit(message="initial commit")
         solutions.remote_add(qa_solutions)
         solutions.push()
 
+        # the `myriad gha` is being triggered on `lewagon-qa/qa-solutions` as a result of the push
+        # wait for `lewagon-qa/qa-challenge` to be created as a result of the `myriad gha`
         qa_challenge.wait_for_creation()
 
+        processed_challenge = GitRepo(os.path.join(self.processed_path, "qa-challenge"), verbose=True)
         processed_challenge.clone(qa_challenge)
 
         # Assert
         shutil.rmtree(os.path.join(processed_challenge.path, ".git"), ignore_errors=True)
 
-        rc, output, error = are_directories_identical(processed_challenge.path, control_challenge_path)
+        control_challenge_path = os.path.join(self.control_path, "qa-challenge")
+
+        rc, output, error = are_directories_identical(
+            processed_challenge.path, control_challenge_path)
 
         if rc != 0:
 
