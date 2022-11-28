@@ -110,8 +110,9 @@ def gha_generate_challenge_repositories(
                 cloned_repo_name))
 
             challenge_github_repo = GitHubRepo(
-                org=challenge.github_nickname, repo=challenge.repo_name,
-                username=gh_nickname, token=gh_token)
+                org=challenge.github_nickname,
+                repo=challenge.repo_name,
+                token=gh_token)
 
             challenge_github_repo.clone(cloned_repo_path, verbose=verbose)
 
