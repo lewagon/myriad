@@ -1,0 +1,43 @@
+name: "Test Myriad"
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  run-test:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Add pipconf
+        run: |
+          mkdir ~/.pip
+          cat << EOF >> ~/.pip/pip.conf
+          [global]
+          trusted-host = pypi.fury.io
+          extra-index-url = https://${{ secrets.GEMFURY_PULL_TOKEN }}@pypi.fury.io/ssaunier
+          EOF
+
+      - name: Install dependencies
+        run: |
+          pip install -U pip
+          pip install wagon_common
+          pip install -e .
+
+      - name: Install package and test
+        env:
+          GIT_USER_NAME: github-actions
+          GIT_USER_EMAIL: github-actions@github.com
+          GH_API_DELETE_TOKEN: ${{ secrets.AUTOBOT_QA_ADMIN_TOKEN }}
+        run: |
+          git config --global user.name $GIT_USER_NAME
+          git config --global user.email $GIT_USER_EMAIL
+          make pytest

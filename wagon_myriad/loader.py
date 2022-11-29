@@ -17,14 +17,12 @@ class Loader:
 
     def __init__(
             self, gha: bool = False, organization: str = None, course: str = COURSE_DATA,
-            gh_nickname: str = None, gh_token: str = None,
             use_meta_repo: bool = False, use_sol_repo: bool = False,
             use_dot_repo: bool = False, use_lal_repo: bool = False,
             use_md_repo: bool = False, use_gh_repo: bool = False):
 
         self.loader_conf = lc = LoaderConf(
             gha=gha, organization=organization, course=course,
-            gh_nickname=gh_nickname, gh_token=gh_token,
             use_meta_repo=use_meta_repo)
 
         if use_meta_repo:
