@@ -120,8 +120,9 @@ class LoaderConf:
                     meta_repo))
 
                 self.meta_github_repo = GitHubRepo(
-                    org=meta_org, repo=meta_repo,
-                    username=self.gh_nickname, token=self.gh_token)
+                    org=meta_org,
+                    repo=meta_repo,
+                    token=self.gh_token)
 
                 self.meta_github_repo.clone(self.meta_repo_path)
 
