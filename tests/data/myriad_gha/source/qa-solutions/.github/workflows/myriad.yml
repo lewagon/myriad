@@ -31,10 +31,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install wagon_common
-          pip install challengify
-          pip install git+https://${{ secrets.GH_PULL_TOKEN }}@github.com/lewagon/myriad.git@gha-test
-          # pip install wagon_common challengify myriad
+          pip install wagon_common challengify myriad
 
       - name: Generate myriads
         env:
