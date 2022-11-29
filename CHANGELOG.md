@@ -3,4 +3,4 @@
 
 ### Added
 
-- Support `python-utilities==0.2.10`
+- Supports `python-utilities==0.2.10`
