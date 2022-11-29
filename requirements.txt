@@ -5,5 +5,5 @@ pyyaml
 pytest
 requests
 
-# wagon_common
+wagon_common
 challengify
