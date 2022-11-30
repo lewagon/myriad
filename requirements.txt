@@ -2,6 +2,7 @@ python-dotenv
 click
 colorama
 pyyaml
+pytest
 requests
 
 wagon_common

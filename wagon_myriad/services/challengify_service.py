@@ -21,7 +21,7 @@ def challengify_service(path, destination, verbose=False):
         "run",
         ".",
         "--force",            # the repo is going to contain the diffs from the commit
-        "--ignore-cwd",       # ignore path from repo root to challenge
+        # "--ignore-cwd",       # ignore path from repo root to challenge
         "--destination",
         destination_path,
         ] + (["--verbose"] if verbose else [])
