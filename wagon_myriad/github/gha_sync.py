@@ -243,7 +243,7 @@ def gha_generate_challenge_repositories(
 
             # write updated file
             with open(destination_ignore_path, "w") as file:
-                
+
                 file.write("".join(content))
 
         print("- retrieve latest commit")
@@ -334,7 +334,8 @@ def gha_generate_challenge_repositories(
                 challengified_repo_path,
                 commit_message,
                 verbose=verbose)
-        ### PAVEL: no check for rc2
+
+        # ## PAVEL: no check for rc2
         if rc != 0:
 
             print(Fore.RED
