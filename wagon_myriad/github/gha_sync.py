@@ -350,9 +350,9 @@ def gha_generate_challenge_repositories(
 
             exit(1)
 
-        # Rename branch (will keep it master if it's already master)
+        # Rename branch (will keep it master/main if it's already master/main)
         if base_ref == "HEAD":
-            print("- on master branch, not renaming")
+            print("- on master/main branch, not renaming")
         else:
             print("- renaming branch")
             rc, output, error = rename_branch(challengified_repo_path, base_ref)
