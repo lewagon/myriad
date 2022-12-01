@@ -27,13 +27,15 @@ from wagon_myriad.github.gha_sync import gha_generate_challenge_repositories
 from wagon_myriad.myriad import check_meta_vs_myriad
 from wagon_myriad.refacto import sanity_check_report
 
+from wagon_common.gh.gh_repo import GhRepo
+
 
 def gen_challenge_repos(
         event, syllabus, is_prod, is_qa,
         solutions_repo_path,
         head_ref, base_ref, base_commit,
         git_token, gh_token,
-        remote, param_verbose, force):
+        remote, param_verbose, force, delete):
     """
     generate individual challenge repositories from course repo
     """
@@ -106,14 +108,24 @@ def gen_challenge_repos(
     print("BASE REF", base_ref)
     print("HEAD REF", head_ref)
 
-    # generate repositories
-    gha_generate_challenge_repositories(
-        event=event, challenges=impacted_challenges,
-        base_ref=base_ref, is_prod=is_prod, is_qa=is_qa,
-        solutions_repo_path=solutions_repo_path,
-        git_token=git_token, gh_token=gh_token,
-        overwrite_sha=overwrite_sha,
-        verbose=verbose)
+    # check action
+    if delete:
+
+        # delete base ref (branch) on myriad repositories
+        for challenge in impacted_challenges:
+            repo_name = f"{challenge.github_nickname}/{challenge.repo_name}"
+            GhRepo(repo_name, token=gh_token).delete_ref(base_ref)
+
+    else:
+
+        # generate repositories
+        gha_generate_challenge_repositories(
+            event=event, challenges=impacted_challenges,
+            base_ref=base_ref, is_prod=is_prod, is_qa=is_qa,
+            solutions_repo_path=solutions_repo_path,
+            git_token=git_token, gh_token=gh_token,
+            overwrite_sha=overwrite_sha,
+            verbose=verbose)
 
     # # legacy one shot sync based
     # generate_challenge_repositories(
