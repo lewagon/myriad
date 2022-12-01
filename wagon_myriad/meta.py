@@ -102,8 +102,10 @@ def gen_challenge_repos(
     if BRANCH_MYRIAD_OVERWRITE in head_ref:
 
         overwrite_sha = extract_overwrite_sha(head_ref)
+
     print("BASE REF", base_ref)
     print("HEAD REF", head_ref)
+
     # generate repositories
     gha_generate_challenge_repositories(
         event=event, challenges=impacted_challenges,
