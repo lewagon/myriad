@@ -126,7 +126,7 @@ def gen_challenge_repos(
 
         # delete base ref (branch) on myriad repositories
         for challenge in impacted_challenges:
-            GhRepo(challenge.challenge_output, token=gh_token,verbose=True).delete_ref(base_ref, dry_run=False)
+            GhRepo(challenge.challenge_output, token=gh_token, verbose=True).delete_ref(base_ref, dry_run=False)
 
     else:
 
