@@ -4,7 +4,7 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
-    TEST_ORG, QA_ORG, DEFAULT_REMOTE_NAME, GHA_EVENT_PULL_REQUEST)
+    DEFAULT_REMOTE_NAME, GHA_EVENT_PULL_REQUEST)
 
 from wagon_myriad.services.challengify_service import challengify_service
 
@@ -25,6 +25,7 @@ from wagon_common.helpers.git.create import git_init, git_add, git_commit
 from wagon_common.helpers.git.push import git_push
 from wagon_common.helpers.git.commit import get_latest_commit
 from wagon_common.helpers.git.checkout import checkout_branch
+from wagon_common.helpers.git.branch import rename_branch
 
 
 def gha_generate_challenge_repositories(
@@ -66,17 +67,6 @@ def gha_generate_challenge_repositories(
 
     # iterate through challenges
     for challenge in challenges:
-
-        # overwrite challenge gh repo target if not in prod
-        if not is_prod:
-
-            # separate qa from test
-            target_org = QA_ORG if is_qa else TEST_ORG
-
-            # overwrite challenge meta
-            challenge.github_nickname = target_org
-            challenge_name = challenge.challenge_output.split("/")[1]
-            challenge.challenge_output = f"{target_org}/{challenge_name}"
 
         print(Fore.BLUE
               + "\nSync challenge:"
@@ -334,6 +324,7 @@ def gha_generate_challenge_repositories(
                 commit_message,
                 verbose=verbose)
 
+        # ## PAVEL: no check for rc2
         if rc != 0:
 
             print(Fore.RED
@@ -348,13 +339,32 @@ def gha_generate_challenge_repositories(
 
             exit(1)
 
+        # Rename branch (will keep it master/main if it's already master/main)
+
+        if base_ref == "HEAD":
+            print("- on master/main branch, not renaming")
+        else:
+            print(f"- renaming branch into {base_ref}")
+            rc, output, error = rename_branch(challengified_repo_path, base_ref)
+
+            if rc != 0:
+
+                print(Fore.RED
+                      + "\nError during renaming branch 🤯"
+                      + Style.RESET_ALL
+                      + f"\n- return code: {rc}"
+                      + f"\n- output: {output}"
+                      + f"\n- error: {error}")
+
+                exit(1)
+
         print("- push code to gh repo")
 
         # push code
         rc, output, error = git_push(
             challengified_repo_path,
             base_ref,
-            force=overwrite_sha is not None,
+            force=True,
             verbose=verbose)
 
         if rc != 0:

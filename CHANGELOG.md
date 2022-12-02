@@ -1,4 +1,11 @@
 
+# 0.2.4 2022-12-02
+
+### Added
+
+- Adds support for publication of all branch names
+- Adds `--delete` flag for branch deletion
+
 # 0.2.3 2022-11-29
 
 ### Added
