@@ -4,6 +4,8 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
+    TEST_ORG,
+    QA_ORG,
     COURSE_LIST,
     PROD_COURSE_ORG,
     BRANCH_VERBOSE,
@@ -108,13 +110,23 @@ def gen_challenge_repos(
     print("BASE REF", base_ref)
     print("HEAD REF", head_ref)
 
+    # overwrite challenge gh repo target if not in prod
+    if not is_prod:
+
+        # separate qa from test
+        target_org = QA_ORG if is_qa else TEST_ORG
+
+        # overwrite challenges org
+        for challenge in impacted_challenges:
+            challenge.github_nickname = target_org
+            challenge.challenge_output = f"{target_org}/{challenge.repo_name}"
+
     # check action
     if delete:
 
         # delete base ref (branch) on myriad repositories
         for challenge in impacted_challenges:
-            repo_name = f"{challenge.github_nickname}/{challenge.repo_name}"
-            GhRepo(repo_name, token=gh_token).delete_ref(base_ref)
+            GhRepo(challenge.challenge_output, token=gh_token).delete_ref(base_ref)
 
     else:
 

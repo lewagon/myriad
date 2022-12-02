@@ -4,7 +4,7 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
-    TEST_ORG, QA_ORG, DEFAULT_REMOTE_NAME, GHA_EVENT_PULL_REQUEST)
+    DEFAULT_REMOTE_NAME, GHA_EVENT_PULL_REQUEST)
 
 from wagon_myriad.services.challengify_service import challengify_service
 
@@ -67,17 +67,6 @@ def gha_generate_challenge_repositories(
 
     # iterate through challenges
     for challenge in challenges:
-
-        # overwrite challenge gh repo target if not in prod
-        if not is_prod:
-
-            # separate qa from test
-            target_org = QA_ORG if is_qa else TEST_ORG
-
-            # overwrite challenge meta
-            challenge.github_nickname = target_org
-            challenge_name = challenge.challenge_output.split("/")[1]
-            challenge.challenge_output = f"{target_org}/{challenge_name}"
 
         print(Fore.BLUE
               + "\nSync challenge:"
