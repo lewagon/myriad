@@ -19,6 +19,10 @@ pip uninstall -y myriad
 alias myr="myriad $@"
 ```
 
+# local run
+
+if running `myriad` locally, the content repositories such as `data-meta` and `data-solutions` should follow the `$HOME/code/$GITHUB_ORG/$REPOSITORY` location pattern
+
 # code environment & parameters
 
 ## myriad gha + test myriad gha

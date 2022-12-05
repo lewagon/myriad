@@ -1,4 +1,10 @@
 
+# 0.2.5 2022-12-05
+
+### Added
+
+- Uses the convention "$HOME/code/$GITHUB_ORG/$REPOSITORY" to locate cloned repositories
+
 # 0.2.4 2022-12-02
 
 ### Added

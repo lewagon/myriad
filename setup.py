@@ -7,7 +7,7 @@ with open("requirements.txt") as f:
     requirements = [c.strip() for c in f.readlines()]
 
 setup(name="myriad",
-      version="0.2.4",
+      version="0.2.5",
       description="Le Wagon challenge split tool",
       url="https://github.com/lewagon/myriad/",
       author="Sébastien Saunier",
