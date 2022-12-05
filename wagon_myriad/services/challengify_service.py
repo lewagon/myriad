@@ -6,7 +6,9 @@ from wagon_common.helpers.subprocess import run_command
 
 def challengify_service(path, destination, verbose=False):
     """
-    challengify the challenge at provided path
+    Challengify a challenge
+    path - source path (the solution to challengify)
+    destination - destination path for the challengified files
     """
 
     # build relative destination path
@@ -19,7 +21,7 @@ def challengify_service(path, destination, verbose=False):
         "run",
         ".",
         "--force",            # the repo is going to contain the diffs from the commit
-        "--ignore-cwd",       # ignore path from repo root to challenge
+        # "--ignore-cwd",       # ignore path from repo root to challenge
         "--destination",
         destination_path,
         ] + (["--verbose"] if verbose else [])

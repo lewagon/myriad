@@ -4,7 +4,7 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
-    TEST_ORG, DEFAULT_REMOTE_NAME, GHA_EVENT_PULL_REQUEST)
+    DEFAULT_REMOTE_NAME, GHA_EVENT_PULL_REQUEST)
 
 from wagon_myriad.services.challengify_service import challengify_service
 
@@ -23,17 +23,16 @@ from wagon_common.helpers.gh.url import github_url
 from wagon_common.helpers.git.remote import git_remote_add
 from wagon_common.helpers.git.create import git_init, git_add, git_commit
 from wagon_common.helpers.git.push import git_push
-from wagon_common.helpers.git.config import git_config
 from wagon_common.helpers.git.commit import get_latest_commit
 from wagon_common.helpers.git.checkout import checkout_branch
+from wagon_common.helpers.git.branch import rename_branch
 
 
 def gha_generate_challenge_repositories(
         event, challenges,
-        base_ref, is_prod,
+        base_ref, is_prod, is_qa,
         solutions_repo_path,
-        git_user_name, git_user_email,
-        gh_nickname, gh_token,
+        git_token, gh_token,
         overwrite_sha=None,
         verbose=False):
     """
@@ -44,7 +43,7 @@ def gha_generate_challenge_repositories(
           + "\n- auth to gh")
 
     # conf gh auth
-    conf_gh_auth(git_user_name, git_user_email, gh_nickname, gh_token)
+    conf_gh_auth(gh_token)
 
     # overwrite sha
     if overwrite_sha is not None:
@@ -68,14 +67,6 @@ def gha_generate_challenge_repositories(
 
     # iterate through challenges
     for challenge in challenges:
-
-        # overwrite challenge gh repo target if not in prod
-        if not is_prod:
-
-            # overwrite challenge meta
-            challenge.github_nickname = TEST_ORG
-            challenge_name = challenge.challenge_output.split("/")[1]
-            challenge.challenge_output = f"{TEST_ORG}/{challenge_name}"
 
         print(Fore.BLUE
               + "\nSync challenge:"
@@ -110,8 +101,9 @@ def gha_generate_challenge_repositories(
                 cloned_repo_name))
 
             challenge_github_repo = GitHubRepo(
-                org=challenge.github_nickname, repo=challenge.repo_name,
-                username=gh_nickname, token=gh_token)
+                org=challenge.github_nickname,
+                repo=challenge.repo_name,
+                token=gh_token)
 
             challenge_github_repo.clone(cloned_repo_path, verbose=verbose)
 
@@ -175,9 +167,7 @@ def gha_generate_challenge_repositories(
             print("- add remote")
 
             # build remote url
-            repo_url = github_url(
-                challenge.challenge_output,
-                username=gh_nickname, token=gh_token)
+            repo_url = github_url(challenge.challenge_output, token=git_token)
 
             # add remote
             rc, output, error = git_remote_add(
@@ -334,6 +324,7 @@ def gha_generate_challenge_repositories(
                 commit_message,
                 verbose=verbose)
 
+        # ## PAVEL: no check for rc2
         if rc != 0:
 
             print(Fore.RED
@@ -348,13 +339,32 @@ def gha_generate_challenge_repositories(
 
             exit(1)
 
+        # Rename branch (will keep it master/main if it's already master/main)
+
+        if base_ref == "HEAD":
+            print("- on master/main branch, not renaming")
+        else:
+            print(f"- renaming branch into {base_ref}")
+            rc, output, error = rename_branch(challengified_repo_path, base_ref)
+
+            if rc != 0:
+
+                print(Fore.RED
+                      + "\nError during renaming branch 🤯"
+                      + Style.RESET_ALL
+                      + f"\n- return code: {rc}"
+                      + f"\n- output: {output}"
+                      + f"\n- error: {error}")
+
+                exit(1)
+
         print("- push code to gh repo")
 
         # push code
         rc, output, error = git_push(
             challengified_repo_path,
             base_ref,
-            force=overwrite_sha is not None,
+            force=True,
             verbose=verbose)
 
         if rc != 0:
@@ -385,38 +395,10 @@ def gha_generate_challenge_repositories(
             exit(1)
 
 
-def conf_gh_auth(git_user_name, git_user_email, gh_nickname, gh_token):
-
-    # conf git username
-    rc, output, error = git_config("user.name", git_user_name)
-
-    if rc != 0:
-
-        print(Fore.RED
-              + "\nUnable to config git username 🤕"
-              + Style.RESET_ALL
-              + f"\n- return code: {rc}"
-              + f"\n- output: {output}"
-              + f"\n- error: {error}")
-
-        exit(1)
-
-    # conf git email
-    rc, output, error = git_config("user.email", git_user_email)
-
-    if rc != 0:
-
-        print(Fore.RED
-              + "\nUnable to config git email 🤕"
-              + Style.RESET_ALL
-              + f"\n- return code: {rc}"
-              + f"\n- output: {output}"
-              + f"\n- error: {error}")
-
-        exit(1)
+def conf_gh_auth(gh_token):
 
     # gh auth
-    rc, output, error = gh_auth(gh_token)  # gh_nickname unused
+    rc, output, error = gh_auth(gh_token)
 
     if rc != 0:
 

@@ -4,6 +4,8 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
+    TEST_ORG,
+    QA_ORG,
     COURSE_LIST,
     PROD_COURSE_ORG,
     BRANCH_VERBOSE,
@@ -27,13 +29,15 @@ from wagon_myriad.github.gha_sync import gha_generate_challenge_repositories
 from wagon_myriad.myriad import check_meta_vs_myriad
 from wagon_myriad.refacto import sanity_check_report
 
+from wagon_common.gh.gh_repo import GhRepo
+
 
 def gen_challenge_repos(
-        event, syllabus, is_prod,
+        event, syllabus, is_prod, is_qa,
         solutions_repo_path,
         head_ref, base_ref, base_commit,
-        git_user_name, git_user_email, gh_nickname, gh_token,
-        remote, param_verbose, force):
+        git_token, gh_token,
+        remote, param_verbose, force, delete):
     """
     generate individual challenge repositories from course repo
     """
@@ -103,15 +107,37 @@ def gen_challenge_repos(
 
         overwrite_sha = extract_overwrite_sha(head_ref)
 
-    # generate repositories
-    gha_generate_challenge_repositories(
-        event=event, challenges=impacted_challenges,
-        base_ref=base_ref, is_prod=is_prod,
-        solutions_repo_path=solutions_repo_path,
-        git_user_name=git_user_name, git_user_email=git_user_email,
-        gh_nickname=gh_nickname, gh_token=gh_token,
-        overwrite_sha=overwrite_sha,
-        verbose=verbose)
+    print("BASE REF", base_ref)
+    print("HEAD REF", head_ref)
+
+    # overwrite challenge gh repo target if not in prod
+    if not is_prod:
+
+        # separate qa from test
+        target_org = QA_ORG if is_qa else TEST_ORG
+
+        # overwrite challenges org
+        for challenge in impacted_challenges:
+            challenge.github_nickname = target_org
+            challenge.challenge_output = f"{target_org}/{challenge.repo_name}"
+
+    # check action
+    if delete:
+
+        # delete base ref (branch) on myriad repositories
+        for challenge in impacted_challenges:
+            GhRepo(challenge.challenge_output, token=gh_token, verbose=True).delete_ref(base_ref, dry_run=False)
+
+    else:
+
+        # generate repositories
+        gha_generate_challenge_repositories(
+            event=event, challenges=impacted_challenges,
+            base_ref=base_ref, is_prod=is_prod, is_qa=is_qa,
+            solutions_repo_path=solutions_repo_path,
+            git_token=git_token, gh_token=gh_token,
+            overwrite_sha=overwrite_sha,
+            verbose=verbose)
 
     # # legacy one shot sync based
     # generate_challenge_repositories(

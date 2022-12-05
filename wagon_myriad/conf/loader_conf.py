@@ -3,12 +3,10 @@ import os
 from colorama import Fore, Style
 
 from wagon_myriad.params.params import (
-    PROD_ORG,
-    GHA_COURSE_CONVERSION,
-    COURSE_ORG, PROD_COURSE_ORG,
+    PROD_ORG, QA_ORG,
+    GHA_COURSE_CONVERSION, COURSE_LIST,
+    QA_COURSE_ORG, COURSE_ORG, PROD_COURSE_ORG,
     GHA_META_REPOS)
-
-from wagon_myriad.params.git import GHA_GIT_USER_NAME, GHA_GIT_USER_EMAIL
 
 from wagon_myriad.github.auth import load_gh_auth
 
@@ -23,7 +21,6 @@ class LoaderConf:
 
     def __init__(
             self, gha: bool, organization: str, course: str,
-            gh_nickname: str, gh_token: str,
             use_meta_repo: bool = False):
 
         self.gha = gha
@@ -32,6 +29,7 @@ class LoaderConf:
 
         # only valid if org is provided
         self.is_prod = self.organization == PROD_ORG
+        self.is_qa = self.organization == QA_ORG
 
         # convert course parameter passed in gha context
         if gha:
@@ -39,12 +37,12 @@ class LoaderConf:
             if course not in GHA_COURSE_CONVERSION.keys():
 
                 print(Fore.RED
-                      + "\nUknown course 🤒"
+                      + "\nUnknown course 🤒"
                       + Style.RESET_ALL
                       + f"\n- course: {course}"
                       + f"\n- known courses: {GHA_COURSE_CONVERSION.keys()}")
 
-                raise ValueError(f"Invalid course: {course}")
+                raise ValueError(f"Invalid conv course: {course}")
 
             # convert course
             course = GHA_COURSE_CONVERSION[course]
@@ -53,40 +51,28 @@ class LoaderConf:
             self.course = course
 
         # validate parameters
-        if course not in PROD_COURSE_ORG.keys():
+        if course not in COURSE_LIST:
 
             print(Fore.RED
                   + "\nInvalid course parameter 🤒"
                   + Style.RESET_ALL
                   + f"\ncourse: {course}"
-                  + f"\nsupported courses: {' '.join(PROD_COURSE_ORG.keys())}")
+                  + f"\nsupported courses: {' '.join(COURSE_LIST)}")
 
             raise ValueError(f"Invalid course: {course}")
 
         # retrieve github organisation
-        org_selector = PROD_COURSE_ORG if self.is_prod else COURSE_ORG
+        if self.is_prod:
+            org_selector = PROD_COURSE_ORG
+        elif self.is_qa:
+            org_selector = QA_COURSE_ORG
+        else:
+            org_selector = COURSE_ORG
 
         self.myriad_org = org_selector[course]
 
-        # handle git and gh credentials
-        if gha:
-
-            # set git params for gha
-            self.git_user_name = GHA_GIT_USER_NAME
-            self.git_user_email = GHA_GIT_USER_EMAIL
-
-            # stored gh nickname and token from params
-            self.gh_nickname = gh_nickname
-            self.gh_token = gh_token
-
-        else:
-
-            # load git and gh params from dot env
-            (
-                self.git_user_name,
-                self.git_user_email,
-                self.gh_nickname,
-                self.gh_token) = load_gh_auth()
+        # load git and gh credentials from dot env
+        self.git_token, self.gh_token = load_gh_auth()
 
         # build meta and solutions conf
         if not gha:
@@ -113,8 +99,9 @@ class LoaderConf:
                     meta_repo))
 
                 self.meta_github_repo = GitHubRepo(
-                    org=meta_org, repo=meta_repo,
-                    username=self.gh_nickname, token=self.gh_token)
+                    org=meta_org,
+                    repo=meta_repo,
+                    token=self.gh_token)
 
                 self.meta_github_repo.clone(self.meta_repo_path)
 
