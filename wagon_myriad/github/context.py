@@ -1,6 +1,7 @@
 
 from wagon_common.helpers.git.diff import git_diff_filenames
 
+from pathlib import Path
 import re
 
 
@@ -70,6 +71,12 @@ def get_challenge_root(file_path):
     """
 
     # retrieve challenge path using metadata file location
+    path = Path(file_path)
+
+    while(path != path.parent):
+        if path.joinpath(".lewagon", "metadata.yml").is_file():
+            return str(path)
+        path = path.parent
 
     return None
 
