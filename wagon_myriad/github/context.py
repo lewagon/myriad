@@ -65,19 +65,27 @@ def get_challenge_path(file_path):
 
 def get_challenge_root(file_path):
     """
-    return challenge path in file path from metadata file
+    return challenge path in file path from the location of the metadata file
     supported challenge paths:
     - **/some/content/there.md (where **/ contains `.lewagon/metadata.yml`)
     """
 
-    # retrieve challenge path using metadata file location
+    # look for the metadata file from the bottom of the path
     path = Path(file_path)
 
+    # search all directories in the path upwards and one at a time
     while(path != path.parent):
+
+        # check if the current path is a challenge
         if path.joinpath(".lewagon", "metadata.yml").is_file():
+
+            # current path is a challenge
             return str(path)
+
+        # switch to parent directory
         path = path.parent
 
+    # no challenge found in the path
     return None
 
 
