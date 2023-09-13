@@ -53,12 +53,25 @@ def get_challenge_path(file_path):
     # verify if filename is in a challenge
     if matches is None:
 
-        return None
+        # retrieve challenge path using metadata file
+        return get_challenge_root(file_path)
 
     # retrieve valid match
     challenge_path = [e for e in matches.groups() if e is not None][0]
 
     return challenge_path
+
+
+def get_challenge_root(file_path):
+    """
+    return challenge path in file path from metadata file
+    supported challenge paths:
+    - **/some/content/there.md (where **/ contains `.lewagon/metadata.yml`)
+    """
+
+    # retrieve challenge path using metadata file location
+
+    return None
 
 
 if __name__ == '__main__':
