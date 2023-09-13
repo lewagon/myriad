@@ -35,7 +35,7 @@ def list_commited_challenges(challenges, path, ref, verbose):
 
 def get_challenge_path(file_path):
     """
-    return challenge path in file path
+    return challenge path in file path from directory structure
     supported challenge paths:
     - 01-Staff/01-Steff/01-Stiff/some/content/there.md
     - 01-Staff/01-Steff/Optional-Stiff/some/content/there.md
@@ -45,7 +45,7 @@ def get_challenge_path(file_path):
     - 01-Staff/01-Steff/some/content/there.md
     """
 
-    # retrieve challenge path
+    # retrieve challenge path using directory structure
     re_pattern = r"(\d\d-[^\/]*\/\d\d-[^\/]*\/\d\d-[^\/]*)|(\d\d-[^\/]*\/\d\d-[^\/]*\/Recap)|(\d\d-[^\/]*\/\d\d-[^\/]*\/Reboot[^\/]*)|(\d\d-[^\/]*\/\d\d-[^\/]*\/Optional-[^\/]*)|(\d\d-[^\/]*\/\d\d-[^\/]*)"
     compiled_re = re.compile(re_pattern)
     matches = compiled_re.match(file_path)
@@ -53,7 +53,6 @@ def get_challenge_path(file_path):
     # verify if filename is in a challenge
     if matches is None:
 
-        # not a match
         return None
 
     # retrieve valid match
