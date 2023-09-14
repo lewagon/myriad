@@ -133,6 +133,10 @@ the PR does not need to be merged, the GHA will run as soon as the PR is created
 
 # supported challenge patterns
 
+new rule:
+- any directory containing a `.lewagon/metadata.yml` metadata file is published as a challenge
+
+legacy rule:
 - `01-Staff/01-Steff/01-Stiff/some/content/there.md`
 - `01-Staff/01-Steff/Optional-Stiff/some/content/there.md`
 - `01-Staff/01-Steff/Recap/some/content/there.md`
