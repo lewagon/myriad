@@ -1,4 +1,10 @@
 
+# 0.2.6 2023-09-14
+
+### Added
+
+- Any directory containing a `.lewagon/metadata.yml` metadata file is published as a challenge
+
 # 0.2.5 2022-12-05
 
 ### Added
