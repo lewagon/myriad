@@ -1,6 +1,7 @@
 
 from wagon_common.helpers.git.diff import git_diff_filenames
 
+from pathlib import Path
 import re
 
 
@@ -35,7 +36,7 @@ def list_commited_challenges(challenges, path, ref, verbose):
 
 def get_challenge_path(file_path):
     """
-    return challenge path in file path
+    return challenge path in file path from directory structure
     supported challenge paths:
     - 01-Staff/01-Steff/01-Stiff/some/content/there.md
     - 01-Staff/01-Steff/Optional-Stiff/some/content/there.md
@@ -45,7 +46,7 @@ def get_challenge_path(file_path):
     - 01-Staff/01-Steff/some/content/there.md
     """
 
-    # retrieve challenge path
+    # retrieve challenge path using directory structure
     re_pattern = r"(\d\d-[^\/]*\/\d\d-[^\/]*\/\d\d-[^\/]*)|(\d\d-[^\/]*\/\d\d-[^\/]*\/Recap)|(\d\d-[^\/]*\/\d\d-[^\/]*\/Reboot[^\/]*)|(\d\d-[^\/]*\/\d\d-[^\/]*\/Optional-[^\/]*)|(\d\d-[^\/]*\/\d\d-[^\/]*)"
     compiled_re = re.compile(re_pattern)
     matches = compiled_re.match(file_path)
@@ -53,13 +54,39 @@ def get_challenge_path(file_path):
     # verify if filename is in a challenge
     if matches is None:
 
-        # not a match
-        return None
+        # retrieve challenge path using metadata file
+        return get_challenge_root(file_path)
 
     # retrieve valid match
     challenge_path = [e for e in matches.groups() if e is not None][0]
 
     return challenge_path
+
+
+def get_challenge_root(file_path):
+    """
+    return challenge path in file path from the location of the metadata file
+    supported challenge paths:
+    - **/some/content/there.md (where **/ contains `.lewagon/metadata.yml`)
+    """
+
+    # look for the metadata file from the bottom of the path
+    path = Path(file_path)
+
+    # search all directories in the path upwards and one at a time
+    while(path != path.parent):
+
+        # check if the current path is a challenge
+        if path.joinpath(".lewagon", "metadata.yml").is_file():
+
+            # current path is a challenge
+            return str(path)
+
+        # switch to parent directory
+        path = path.parent
+
+    # no challenge found in the path
+    return None
 
 
 if __name__ == '__main__':

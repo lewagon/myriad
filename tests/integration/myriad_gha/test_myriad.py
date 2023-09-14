@@ -54,7 +54,7 @@ class TestMyriadGha():
         solutions.add()
         solutions.commit(message="initial commit")
         solutions.remote_add(qa_solutions)
-        solutions.push()
+        solutions.push(branch="master")
         solutions.delete_git_dir()
 
         # the `myriad gha` is being triggered on `lewagon-qa/qa-solutions` as a result of the push
