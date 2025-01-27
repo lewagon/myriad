@@ -1,4 +1,11 @@
 
+# 0.2.7 (2025-01-27)
+
+### Updated
+
+- Removes the GHA publishing the package to Gemfury on merge
+- Updates instructions to install from GitHub public repo
+
 # 0.2.6 2023-09-14
 
 ### Added
