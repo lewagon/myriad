@@ -5,5 +5,5 @@ pyyaml
 pytest
 requests
 
-git+https://github.com/lewagon/python-utilities
-git+https://github.com/lewagon/challengify
+challengify @ git+https://github.com/lewagon/challengify
+wagon_common @ git+https://github.com/lewagon/python-utilities
