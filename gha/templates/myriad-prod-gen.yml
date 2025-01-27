@@ -19,19 +19,12 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Add pipconf
-        run: |
-          mkdir ~/.pip
-          cat << EOF >> ~/.pip/pip.conf
-          [global]
-          trusted-host = pypi.fury.io
-          extra-index-url = https://${{ secrets.GEMFURY_PULL_TOKEN }}@pypi.fury.io/ssaunier
-          EOF
-
       - name: Install dependencies
         run: |
           pip install -U pip
-          pip install wagon_common challengify myriad
+          pip install git+https://github.com/lewagon/python-utilities
+          pip install git+https://github.com/lewagon/challengify
+          pip install git+https://github.com/lewagon/myriad
 
       - name: Generate myriads
         run: |

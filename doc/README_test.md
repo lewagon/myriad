@@ -8,7 +8,6 @@ brew install act
 # prod
 
 `lewagon-qa` org secrets:
-- `GEMFURY_PULL_TOKEN`: in order to install wagon_common, challengify, myriad
 - `GMANCHON_DEV_TOKEN`: in order to allow to pull non released versions of wagon_common, challengify, myriad
 - `USERNAME`: required by the Myriad GHA
 - `TOKEN`: required by the Myriad GHA
@@ -19,7 +18,6 @@ brew install act
 ## prerequisites
 
 `lewagon-data` org wide conf:
-- `secrets.GEMFURY_PULL_TOKEN`: gemfury token
 - `secrets.VERBOSE`: optional
 - `secrets.USERNAME`: github nickname
 - `secrets.TOKEN`: github personal access token with **repo** + **admin:org** + **workflow** scopes

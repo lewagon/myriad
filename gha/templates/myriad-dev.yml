@@ -10,25 +10,31 @@ jobs:
   myriad-dev:
     runs-on: ubuntu-latest
     steps:
+
     - uses: actions/checkout@v2
       with:
         fetch-depth: 0
+
     - name: Set up Python 3.8
       uses: actions/setup-python@v2
       with:
         python-version: 3.8
+
     # - name: Dump GitHub context
     #   env:
     #     GITHUB_CONTEXT: ${{ toJson(github) }}
     #   run: echo "$GITHUB_CONTEXT"
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/python-utilities.git@main
-        pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/challengify.git@main
-        pip install git+https://${{ secrets.USERNAME }}:${{ secrets.TOKEN }}@github.com/lewagon/myriad.git@main
+        pip install -U pip
+        pip install git+https://github.com/lewagon/python-utilities
+        pip install git+https://github.com/lewagon/challengify
+        pip install git+https://github.com/lewagon/myriad
+
     # - name: Setup tmate session
     #   uses: mxschmitt/action-tmate@v3
+
     - name: Generate myriads
       run: |
         if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
