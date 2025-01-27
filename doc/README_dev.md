@@ -35,7 +35,7 @@ Install the packages in editable mode (the `myriad` script will be running the c
 
 ``` bash
 # cd ~/code/lewagon-myriad/challengify && pip install -e .  # latest version not running with myriad at the moment
-pip install challengify==0.3.1
+pip install git+https://github.com/lewagon/challengify==0.3.1
 cd ~/code/lewagon-myriad/myriad && pip install -e .
 cd ~/code/lewagon-myriad/python-utilities && pip install -e .
 ```
