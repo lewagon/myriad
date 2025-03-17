@@ -13,18 +13,22 @@ BRANCH_MYRIAD_OVERWRITE = "--myriad-overwrite-"
 COURSE_QA = "qa"
 COURSE_DATA = "data"
 COURSE_WEB = "fullstack"
+COURSE_DATA_ANALYTICS = "data-analytics"
 
 COURSE_LIST = [
     COURSE_QA,
     COURSE_DATA,
-    COURSE_WEB]
+    COURSE_WEB,
+    COURSE_DATA_ANALYTICS]
 
 GHA_COURSE_CONVERSION = {
     f"{QA_ORG}/qa-solutions": COURSE_QA,
     f"{TEST_ORG}/data-solutions": COURSE_DATA,
     f"{TEST_ORG}/fullstack-solutions": COURSE_WEB,
+    f"{TEST_ORG}/data-analytics-solutions": COURSE_DATA_ANALYTICS,
     f"{PROD_ORG}/data-solutions": COURSE_DATA,
-    f"{PROD_ORG}/fullstack-solutions": COURSE_WEB}
+    f"{PROD_ORG}/fullstack-solutions": COURSE_WEB,
+    f"{PROD_ORG}/data-anlaytics-solutions": COURSE_DATA_ANALYTICS,}
 
 # legacy org selection
 COURSE_ORG = dict(
@@ -36,7 +40,8 @@ QA_COURSE_ORG = dict(
 
 PROD_COURSE_ORG = dict(
     data="lewagon-data",
-    fullstack="lewagon-web")
+    fullstack="lewagon-web",
+    data-analytics="lewagon-data-analytics")
 
 # legacy process
 GHA_META_REPOS = dict(
