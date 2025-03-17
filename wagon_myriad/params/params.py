@@ -38,10 +38,11 @@ COURSE_ORG = dict(
 QA_COURSE_ORG = dict(
     qa="lewagon-qa")
 
-PROD_COURSE_ORG = dict(
-    data="lewagon-data",
-    fullstack="lewagon-web",
-    "data-analytics"="lewagon-data-analytics")
+PROD_COURSE_ORG = {
+    "data": "lewagon-data",
+    "fullstack": "lewagon-web",
+    "data-analytics": "lewagon-data-analytics"
+}
 
 # legacy process
 GHA_META_REPOS = dict(
