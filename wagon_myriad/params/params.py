@@ -28,7 +28,7 @@ GHA_COURSE_CONVERSION = {
     f"{TEST_ORG}/data-analytics-solutions": COURSE_DATA_ANALYTICS,
     f"{PROD_ORG}/data-solutions": COURSE_DATA,
     f"{PROD_ORG}/fullstack-solutions": COURSE_WEB,
-    f"{PROD_ORG}/data-anlaytics-solutions": COURSE_DATA_ANALYTICS,}
+    f"{PROD_ORG}/data-analytics-solutions": COURSE_DATA_ANALYTICS,}
 
 # legacy org selection
 COURSE_ORG = dict(
