@@ -45,10 +45,12 @@ PROD_COURSE_ORG = {
 }
 
 # legacy process
-GHA_META_REPOS = dict(
-    qa=("lewagon", "data-meta"),  # invalid but unused
-    data=("lewagon", "data-meta"),
-    fullstack=("lewagon", "fullstack-meta"))
+GHA_META_REPOS = {
+    "qa": ("lewagon", "data-meta"),  # invalid but unused
+    "data": ("lewagon", "data-meta"),
+    "fullstack": ("lewagon", "fullstack-meta"),
+    "data-analytics": ("lewagon", "data-analytics-meta")
+}
 
 # git params
 DEFAULT_REMOTE_NAME = "origin"
