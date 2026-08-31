@@ -140,6 +140,10 @@ legacy rule:
 - `01-Staff/01-Steff/Recap/some/content/there.md`
 - `01-Staff/01-Steff/some/content/there.md`
 
+# git ignore file
+
+the root `.gitignore` file in the solutions repo is copied to each challenge repo
+
 # challengify ignore files
 
 myriad handles the global content repo challengify `.syncignore` and `.challengifyignore` files:
