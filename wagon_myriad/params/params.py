@@ -31,9 +31,11 @@ GHA_COURSE_CONVERSION = {
     f"{PROD_ORG}/data-analytics-solutions": COURSE_DATA_ANALYTICS,}
 
 # legacy org selection
-COURSE_ORG = dict(
-    data="lewagon-test",
-    fullstack="lewagon-test")
+COURSE_ORG = {
+    "data": "lewagon-test",
+    "fullstack": "lewagon-test",
+    "data-analytics": "lewagon-test"
+}
 
 QA_COURSE_ORG = dict(
     qa="lewagon-qa")
