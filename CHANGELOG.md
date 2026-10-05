@@ -1,4 +1,11 @@
 
+# 0.2.8 (2026-10-05)
+
+### Updated
+
+- Adds missing data-analytics conf for myriad unicity
+- Updates `--event` short form option to `-t`
+
 # 0.2.7 (2025-01-27)
 
 ### Updated

@@ -52,7 +52,7 @@ def list(course):
     is_flag=True,
     help="Run as github action (default: False).")
 @click.option(
-    "-v", "--event",
+    "-t", "--event",
     default=GHA_EVENT_PUSH,
     help=f"Event in gha context (default: {GHA_EVENT_PUSH}).")
 @click.option(
